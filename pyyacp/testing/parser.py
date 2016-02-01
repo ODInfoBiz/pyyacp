@@ -8,6 +8,6 @@ from pyyacp.yacp import YACParser
 if __name__ == '__main__':
     
     
-    file = "/Users/jumbrich/Downloads/Globalstrahlung.csv"
+    file = "/Users/jumbrich/Downloads/BAUSTELLENPKTOGD.csv"
     p = YACParser(filename=file)
-    print p.table.__dict__
+    print p.__dict__['header_line']
