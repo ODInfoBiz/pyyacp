@@ -15,40 +15,43 @@ class YACParserException(Exception):
 class YACParser(object):
     def __init__(self, filename=None, url=None, content=None, sample_size=20, skip_guess_encoding=False):
 
-        try:
-            self.table = anycsv.reader(filename=filename, url=url, content=content,skip_guess_encoding=skip_guess_encoding)
-    
-            #copy dialect information to the returning result object
-            keys = ['encoding','url','filename','delimiter','quotechar','columns']
-            for k,v in self.table.__dict__.items():
-                if k in keys:
-                    if v:
-                        setattr(self, k, v)
-            self.columns = self.table.columns
-            
-            self.sample = []
-            for i, row in enumerate(self.table):
-                if len(row) != self.columns:
-                    raise ValueError("Row length of "+str(len(row))+" does not match column length of "+str(self.columns))
-                if i >= sample_size:
-                    break
-                self.sample.append(row)
-    
-            self.emptyColumns = detect_empty_columns(self.sample)
-            self.description = guess_description_lines(self.sample)
-            
-            self.descriptionLines = []
-            for i in range(0, self.description):
-                self.descriptionLines.append(self.sample.pop(0))
-    
-            self.header_line = guess_headers(self.sample, self.emptyColumns)
-    
-            if self.header_line:
-                self.table.seek_line(self.description + 1)
-            else:
-                self.table.seek_line(self.description)
-        except Exception as e:
-            raise YACParser(str(e.__class__.__name__)+' '+'\n==> '.join(e.args))
+        self.table = anycsv.reader(filename=filename, url=url, content=content,skip_guess_encoding=skip_guess_encoding)
+
+        #copy dialect information to the returning result object
+        keys = ['encoding','url','filename','delimiter','quotechar','columns']
+        for k,v in self.table.__dict__.items():
+            if k in keys:
+                if v:
+                    setattr(self, k, v)
+
+        self.sample = []
+        for i, row in enumerate(self.table):
+            #if len(row) != self.columns:
+            #    raise ValueError("Row length of "+str(len(row))+" does not match column length of "+str(self.columns))
+            if i >= sample_size:
+                break
+            self.sample.append(row)
+
+
+        self.description = guess_description_lines(self.sample)
+        if self.description:
+            self.sample = self.sample[self.description:]
+
+        self.emptyColumns = detect_empty_columns(self.sample)
+
+        self.columns = len(self.sample[self.description])
+
+        self.descriptionLines = []
+        for i in range(0, self.description):
+            self.descriptionLines.append(self.sample.pop(0))
+
+        self.header_line = guess_headers(self.sample, self.emptyColumns)
+
+
+        if self.header_line:
+            self.table.seek_line(self.description + 1)
+        else:
+            self.table.seek_line(self.description)
 
     def next(self):
         return self.table.next()
