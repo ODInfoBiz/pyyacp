@@ -2,7 +2,7 @@ from collections import defaultdict
 
 import operator
 
-from csvengine.profiling import outlier_detection
+# from csvengine.profiling import outlier_detection
 
 
 def profile(table):
@@ -28,10 +28,11 @@ def profile(table):
     header = table.header_line if table.header_line else []
     columns = [Column(vals) for vals in data_columns]
 
+    # TODO
     outliers = {}
-    for i, c in enumerate(columns):
-        if c.label == ColumnLabel.NUMERIC:
-            outliers[i] = outlier_detection.get_outlier_indices(c.values)
+    # for i, c in enumerate(columns):
+    #     if c.label == ColumnLabel.NUMERIC:
+    #         outliers[i] = outlier_detection.get_outlier_indices(c.values)
 
     data = {
         'rows': row_i+1,
