@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 import operator
 
@@ -50,7 +50,9 @@ def profile(table):
             'header': sum([True if h else False for h in header]) / float(len(header)) if len(header) > 0 else -1,
             'rows': row_compl/(row_i+1)
         },
-        'distinct': [len(set(c.values)) for c in columns]
+        'distinct': [len(set(c.values)) for c in columns],
+        'column_unique': [list(set(c.values))[:30] for c in columns],
+        'column_counter': [Counter(c.values) for c in columns]
     }
     return data
 
