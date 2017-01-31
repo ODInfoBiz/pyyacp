@@ -15,10 +15,10 @@ class YACParserException(Exception):
 class YACParser(object):
     def __init__(self, filename=None, url=None, content=None, sample_size=20, skip_guess_encoding=False):
 
-        self.table = anycsv.reader(filename=filename, url=url, content=content,skip_guess_encoding=skip_guess_encoding)
+        self.table = anycsv.reader(filename=filename, url=url, content=content, skip_guess_encoding=skip_guess_encoding)
 
-        #copy dialect information to the returning result object
-        keys = ['encoding','url','filename','delimiter','quotechar','columns']
+        # copy dialect information to the returning result object
+        keys = ['encoding', 'url', 'filename', 'delimiter', 'quotechar', 'columns']
         for k,v in self.table.__dict__.items():
             if k in keys:
                 if v:
