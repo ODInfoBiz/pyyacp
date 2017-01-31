@@ -17,12 +17,12 @@ SAMPLE_CSVS = ["bevoelkerung.csv", "bezirkszahlen.csv", "hunde_wien.csv"]
 def test_parser(path_to_file):
     p = YACParser(filename=path_to_file)
     assert p
-    print p.__dict__['header_line']
+    print(p.__dict__['header_line'])
 
 
 def test_profiler(path_to_file):
-    p = YACParser(filename=path_to_file)
-    print profile(p)
+    p = YACParser(filename=path_to_file, skip_guess_encoding=False)
+    print(profile(p))
     # assert profile(p)
 
 

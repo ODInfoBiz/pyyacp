@@ -4,7 +4,13 @@ Created on Jan 29, 2016
 @author: jumbrich
 '''
 from pyyacp import simple_type_detection
-import StringIO
+
+# python 3 compatible
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+    
 import unicodecsv as csv
 import anycsv
 import unicodecsv
