@@ -11,7 +11,7 @@ from pyyacp.yacp import YACParser
 from pyyacp.profiler import profile
 
 SAMPLES_PATH = "sample_csvs/"
-SAMPLE_CSVS = ["bevoelkerung.csv", "bezirkszahlen.csv", "hunde_wien.csv"]
+SAMPLE_CSVS = ["bevoelkerung.csv", "bezirkszahlen.csv", "hunde_wien.csv", "hunde_wien2.csv"]
 
 
 def test_parser(path_to_file):
@@ -21,7 +21,7 @@ def test_parser(path_to_file):
 
 
 def test_profiler(path_to_file):
-    p = YACParser(filename=path_to_file, skip_guess_encoding=False)
+    p = YACParser(filename=path_to_file)
     print(profile(p))
     # assert profile(p)
 
@@ -29,7 +29,7 @@ def test_profiler(path_to_file):
 if __name__ == '__main__':
     # show debug log info
     # logging.basicConfig(level=logging.DEBUG)
-    file_path = SAMPLES_PATH + SAMPLE_CSVS[1]
+    file_path = SAMPLES_PATH + SAMPLE_CSVS[3]
     # test_parser(file_path)
     test_profiler(file_path)
 
