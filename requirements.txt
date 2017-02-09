@@ -1,0 +1,14 @@
+-e git+git@github.com:sebneu/anycsv.git@e23f40a61fec9562d32164fa54fea3f731cdc2ec#egg=anycsv
+appdirs==1.4.0
+dateutils==0.6.6
+file-magic==0.3.0
+numpy==1.12.0
+packaging==16.8
+pandas==0.19.2
+pyparsing==2.1.10
+python-dateutil==2.6.0
+pytz==2016.10
+requests==2.13.0
+six==1.10.0
+structlog==16.1.0
+unicodecsv==0.14.1

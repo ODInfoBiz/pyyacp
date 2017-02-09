@@ -3,17 +3,20 @@ Created on Jan 29, 2016
 
 @author: jumbrich
 '''
-from pyyacp import simple_type_detection
 
 # python 3 compatible
+from pyyacp.table_structure_helper import guess_description_lines, guess_headers, detect_empty_columns
+
 try:
     from StringIO import StringIO
 except ImportError:
     from io import StringIO
-    
-import unicodecsv as csv
+
 import anycsv
 import unicodecsv
+import structlog
+log = structlog.get_logger()
+
 
 class YACParserException(Exception):
     pass
@@ -21,14 +24,19 @@ class YACParserException(Exception):
 class YACParser(object):
     def __init__(self, filename=None, url=None, content=None, sample_size=20, skip_guess_encoding=False):
 
-        self.table = anycsv.reader(filename=filename, url=url, content=content, skip_guess_encoding=skip_guess_encoding)
+        self.table = anycsv.reader(filename=filename, url=url, content=content, skip_guess_encoding=skip_guess_encoding, sniff_lines=sample_size)
 
-        # copy dialect information to the returning result object
-        keys = ['encoding', 'url', 'filename', 'delimiter', 'quotechar', 'columns']
+        keys = ['encoding', 'url', 'filename', 'delimiter', 'quotechar']
+        self.meta = {}
         for k,v in self.table.__dict__.items():
             if k in keys:
                 if v:
-                    setattr(self, k, v)
+                    self.meta[k] = v
+                    #setattr(self, k, v)
+        self.meta['dialect'] = self.table.dialect
+        print self.meta
+
+
 
         self.sample = []
         for i, row in enumerate(self.table):
@@ -38,8 +46,8 @@ class YACParser(object):
                 break
             self.sample.append(row)
 
-
-        self.description = guess_description_lines(self.sample)
+        self.descriptionLines  = guess_description_lines(self.sample)
+        self.description = len(self.descriptionLines)
         if self.description:
             self.sample = self.sample[self.description:]
 
@@ -47,17 +55,16 @@ class YACParser(object):
 
         self.columns = len(self.sample[self.description])
 
-        self.descriptionLines = []
-        for i in range(0, self.description):
-            self.descriptionLines.append(self.sample.pop(0))
-
         self.header_line = guess_headers(self.sample, self.emptyColumns)
 
 
         if self.header_line:
-            self.table.seek_line(self.description + 1)
+            self.table.seek_line(self.description + len(self.header_line))
         else:
             self.table.seek_line(self.description)
+
+    def seek_line(self, lineNo):
+        self.table.seek_line(lineNo)
 
     def next(self):
         return self.table.next()
@@ -98,64 +105,5 @@ class YACParser(object):
         for row in self:
             w.writerow(row)
         return csvstream.getvalue()
-    
-DESCRIPTION_CONFIDENCE = 10
-
-def guess_description_lines(sample):
-
-    first_lines = True
-    conf = 0
-    description_lines = 0
-    for i, row in enumerate(sample):
-        if len(row) == 1 and len(row[0]) > 0:
-            if not first_lines:
-                # a description line candidate not in the first line, possibly no description line
-                return 0
-        elif len(row) > 1 and all([len(c) == 0 for c in row[1:]]):
-            if not first_lines:
-                # a description line candidate not in the first line, possibly no description line
-                return 0
-        else:
-            if first_lines:
-                description_lines = i
-                first_lines = False
-            if conf > DESCRIPTION_CONFIDENCE:
-                return description_lines
-        conf += 1
-    return description_lines
 
 
-HEADER_CONFIDENCE = 1
-
-def guess_headers(sample, empty_columns=None):
-    # first store types of first x rows
-    types = []
-    for i, row in enumerate(sample):
-        if i >= HEADER_CONFIDENCE:
-            break
-        row_types = []
-        for c in row:
-            t = simple_type_detection.detectType(c)
-            row_types.append(t)
-        types.append(row_types)
-
-    # now analyse types
-    first = types[0]
-    if empty_columns:
-        first = [i for j, i in enumerate(first) if j not in empty_columns]
-    first_is_alpha = all(['ALPHA' in t for t in first])
-    if first_is_alpha:
-        return sample[0]
-    return []
-
-def detect_empty_columns(sample):
-    empty_col = []
-    if len(sample) > 0:
-        columns = [[] for _ in sample[0]]
-        for row in sample:
-            for j, c in enumerate(row):
-                columns[j].append(c)
-        for i, col in enumerate(columns):
-            if all(['EMPTY' in simple_type_detection.detectType(c) for c in col]):
-                empty_col.append(i)
-    return empty_col
