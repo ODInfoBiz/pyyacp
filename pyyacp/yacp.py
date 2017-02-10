@@ -34,9 +34,6 @@ class YACParser(object):
                     self.meta[k] = v
                     #setattr(self, k, v)
         self.meta['dialect'] = self.table.dialect
-        print self.meta
-
-
 
         self.sample = []
         for i, row in enumerate(self.table):
