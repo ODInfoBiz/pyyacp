@@ -93,7 +93,7 @@ class YACParser(object):
         :param commentPrefix: The prefix for comments in the first rows. If false, any comments will be ignored.
         :return: A string representation of the CSV table
         """
-        csvstream = StringIO.StringIO()
+        csvstream = StringIO()
         w = unicodecsv.writer(csvstream, encoding="utf-8", delimiter=delimiter, lineterminator=newline)
 
         # write description lines at top
