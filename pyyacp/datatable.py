@@ -28,9 +28,6 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
                    key= lambda (x, v): (len(list(v)) , -L.index(x))
                    )[0] if len(L)>0 else None
 
-
-    #def readTables(cls, rowIter, batches=80, meta={}, filename=None, max_tables=3):
-
     rows = 0
     #gc.disable()
     for g_rows in grouper(batches, yacpParser):
@@ -54,7 +51,7 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
                 comments = guess_description_lines(g_rows)
                 print len(g_rows[len(comments):])
                 header = _detect_header_lines(g_rows[len(comments):])
-                cur_dt = DataTable(yacpParser.meta, est_colNo, comments=comments, headers=header)
+                cur_dt = DataTable(yacpParser.meta, est_colNo, comments=comments, headers=header, url=url, id=len(tables))
 
                 pos = len(comments) + len(header)
                 cur_dt.addRows(g_rows[pos:])
@@ -109,8 +106,7 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
 
 
                     elif group[0] == cur_dt.noCols:
-                        for row in g_rows[cur_line:group[1]]:
-                            cur_dt.addRow(row)
+                        cur_dt.addRows(g_rows[cur_line:group[1]])
 
                     else:
                         # seems like a new table
@@ -131,12 +127,11 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
 
                         comments = guess_description_lines(g_rows[start:])
                         header = _detect_header_lines(g_rows[start + len(comments):])
-                        cur_dt = DataTable(yacpParser.meta, group[0], comments=comments, headers=header)
+                        cur_dt = DataTable(yacpParser.meta, group[0], comments=comments, headers=header, url=url, id=len(tables))
 
                         pos = len(comments) + len(header) + start
                         end = cur_line + group[1]
-                        for row in g_rows[pos:end]:
-                            cur_dt.addRow(row)
+                        cur_dt.addRows(g_rows[pos:end])
                         create_new = False
 
                 cur_line += group[1]
@@ -166,10 +161,12 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
 
 class DataTable(object):
 
-    def __init__(self, meta, cols, comments=None, headers=None):
+    def __init__(self, meta, cols, url, id, comments=None, headers=None):
         self.meta = meta
         self.noCols = cols
         self.noRows = 0
+        self.url=url
+        self.id=id
 
         self.comments = comments if comments else []
         self.header_rows = headers if headers else []
@@ -177,12 +174,12 @@ class DataTable(object):
         self.columnIDs=['col{}'.format(i) for i in range(1, self.noCols+1)]
         self.data=pd.DataFrame(columns=self.columnIDs)
         self.header_cols=list(map(list, zip(*self.header_rows)))
-        #TODO, lets see what we do with the header
-
 
     def addRows(self, rows):
+
         df = pd.DataFrame(list(rows), columns=self.columnIDs)
         self.data=pd.concat([self.data,df])
+        self.noRows=self.data.shape[1]
 
     def rows(self):
         return [row for row in self.rowIter()]
@@ -197,4 +194,3 @@ class DataTable(object):
     def columnIter(self):
         for colName in self.columnIDs:
             yield self.data[colName].tolist()
-

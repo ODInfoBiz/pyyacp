@@ -1,4 +1,4 @@
--e git+git@github.com:sebneu/anycsv.git@e23f40a61fec9562d32164fa54fea3f731cdc2ec#egg=anycsv
+-e git+git@github.com:sebneu/anycsv.git#egg=anycsv
 appdirs==1.4.0
 dateutils==0.6.6
 file-magic==0.3.0
