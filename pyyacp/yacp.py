@@ -54,9 +54,8 @@ class YACParser(object):
 
         self.header_line = guess_headers(self.sample, self.emptyColumns)
 
-
         if self.header_line:
-            self.table.seek_line(self.description + len(self.header_line))
+            self.table.seek_line(self.description + 1)
         else:
             self.table.seek_line(self.description)
 
