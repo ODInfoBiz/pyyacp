@@ -1,27 +1,31 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
-from pyyacp.datatable import parseDataTables
+import  pyyacp.datatable as datatable
+from pyyacp.table_structure_helper import AdvanceStructureDetector
 
-SAMPLES_PATH = "sample_csvs/"
-SAMPLE_CSVS = ["bevoelkerung.csv", "bezirkszahlen.csv", "hunde_wien.csv", "hunde_wien2.csv"]
-
-
-
-
-path_to_file=SAMPLES_PATH+SAMPLE_CSVS[3]
-
-url="http://data.wu.ac.at/dataset/3ed4f378-c680-4fb1-a067-f8acb25dbbce/resource/41ad6a88-940d-408f-87f2-909107c82587/download/allcoursesandorgid17s.csv"
-from pyyacp.yacp import YACParser
-#yacp = YACParser(filename=path_to_file,sample_size=1800)
-yacp = YACParser(url=url,sample_size=1800)
-print yacp
+SAMPLES_PATH = "sample_csvs"
+from os import listdir
+from os.path import isfile, join
+onlyfiles = [join(SAMPLES_PATH, f) for f in listdir(SAMPLES_PATH) if isfile(join(SAMPLES_PATH, f))]
 
 
-tables=parseDataTables(yacp, url=url)
 
-for t in tables:
-    print t.comments
-    print t.header_rows
-    print t.data.describe()
-    print t.data['col7'].describe(), type(t.data['col7'].describe())
-    print t.rowIter()
+for csv_file in onlyfiles:
+    if 'multi_head_milti_table.csv' not in csv_file:
+        continue
+
+    from pyyacp import YACParser
+
+    yacp = YACParser(filename=csv_file,structure_detector = AdvanceStructureDetector(),sample_size=1800)
+    print yacp
+
+
+    tables=datatable.parseDataTables(yacp, url='http://example.org/test', max_tables=10)
+
+    for table in tables:
+        print table.data.shape
+        print table.data.head(5)
+
+
+        print 'Comments', table.comments
+        print 'Headers', table.header_rows

@@ -1,15 +1,20 @@
 import itertools
+from StringIO import StringIO
+
 import pandas as pd
+import unicodecsv
 
-from pyyacp.table_structure_helper import guess_description_lines, _detect_header_lines
+from pyyacp.table_structure_helper import guess_description_lines, _detect_header_lines, _most_common_oneliner, \
+    SimpleStructureDetector, AdvanceStructureDetector
+from pyyacp.timer import Timer, timer
 
+from pyyacp import YACParserException
 import structlog
-
-from pyyacp.yacp import YACParserException
-
 log = structlog.get_logger()
 
-def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
+
+@timer(key="parse_datatable")
+def parseDataTables(yacpParser, url=None, batches=80, max_tables=1, raiseError=True, structure_detector=AdvanceStructureDetector()):
     yacpParser.seek_line(0)
     tables = []
     cur_dt = None
@@ -23,49 +28,35 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
                 return
             yield chunk
 
-    def _most_common_oneliner(L):
-        return max(itertools.groupby(sorted(L)),
-                   key= lambda (x, v): (len(list(v)) , -L.index(x))
-                   )[0] if len(L)>0 else None
-
     rows = 0
-    #gc.disable()
+    rows_to_add=[]
     for g_rows in grouper(batches, yacpParser):
         rows += len(g_rows)
 
         # analys the shape of the rows
-        r_len = [len(row) for row in g_rows]
+        r_len = map(len, g_rows)
         max_len = max(r_len)
         est_colNo = _most_common_oneliner(r_len)
-        grouped_L = [(k, sum(1 for i in g)) for k, g in itertools.groupby(r_len)]
+        grouped_L = [ ( k, sum(1 for i in g) ) for k, g in itertools.groupby(r_len)]
 
-        # print grouped_L
         groups += grouped_L
 
-        # determine how "many" tables we have
         if len(grouped_L) == 1:
             # perfect, one table in this batch
-
             if cur_dt is None:
                 # we have no table, this is hte first
-                comments = guess_description_lines(g_rows)
-                print len(g_rows[len(comments):])
-                header = _detect_header_lines(g_rows[len(comments):])
+                comments = structure_detector.guess_description_lines(list(g_rows))
+                header = structure_detector.guess_headers(list(g_rows))
                 cur_dt = DataTable(yacpParser.meta, est_colNo, comments=comments, headers=header, url=url, id=len(tables))
 
                 pos = len(comments) + len(header)
-                cur_dt.addRows(g_rows[pos:])
-
-            elif max_len == cur_dt.noCols:
-                cur_dt.addRows(g_rows)
-
+                rows_to_add.extend(g_rows[pos:])
+            elif max_len == cur_dt.no_cols:
+                rows_to_add.extend(g_rows[pos:])
             else:
                 # not the same length, maybe different table , should not happen
                 log.warning("NOT IMPLEMENTED", filename=yacpParser.url,
                             msg="not the same length, maybe different table")
-
-                # print 'ROWS: ', len(cur_dt.rows)
-                # print 'CURRENT SIZE: ', get_size.getsize(cur_dt)/1000000., 'MB'
         else:
             # lets go over the groups
             # (2,30) -> belongs to old table
@@ -76,12 +67,10 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
             cur_line = 0
             create_new = False
             for i, group in enumerate(grouped_L):
-                # print group, cur_line, create_new
 
-                if group[0] == 0:
-                    # empty line, skip
+                if group[0] == 0:   # empty line, skip
                     pass
-                elif group[0] == 1:
+                elif group[0] == 1 or group[1]<3:
                     # there is a group with one element, that should be the comment lines
                     # also this means a new table
                     if i == len(grouped_L) - 1 and [sum(x) for x in zip(*grouped_L)][1] < batches:
@@ -89,25 +78,19 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
                         log.warning("SUFFIX COMMENT LINES")
                     else:
                         # we have more groups to come, so lets start a new table from this line
-                        parse_start = cur_line
+                        if not create_new:
+                            parse_start = cur_line
                         create_new = True
                 else:
                     # a group with more than one column
                     start = None
                     if cur_dt is None or create_new:
-
                         start = cur_line
                         if create_new:
                             start = parse_start
-
-                            # we have no table, this is hte first
-                            # start parsing a new table from cur_lines
-
-
-
-                    elif group[0] == cur_dt.noCols:
-                        cur_dt.addRows(g_rows[cur_line:group[1]])
-
+                    elif group[0] == cur_dt.no_cols:
+                        #cur_dt.addRows(g_rows[cur_line:group[1]])
+                        rows_to_add.extend(g_rows[cur_line:group[1]])
                     else:
                         # seems like a new table
                         if group[1] != 1 or (
@@ -121,21 +104,27 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
                             pass
 
                     if start is not None:
-                        # print "Creating new table"
                         if cur_dt:
+                            with Timer(key="adding {} rows".format(len(rows_to_add)), verbose=True):
+                                cur_dt.addRows(rows_to_add)
+                                rows_to_add=[]
                             tables.append(cur_dt)
 
-                        comments = guess_description_lines(g_rows[start:])
-                        header = _detect_header_lines(g_rows[start + len(comments):])
+                        comments = structure_detector.guess_description_lines(g_rows[start:])
+                        header = structure_detector.guess_headers(g_rows[start:])
+
                         cur_dt = DataTable(yacpParser.meta, group[0], comments=comments, headers=header, url=url, id=len(tables))
 
                         pos = len(comments) + len(header) + start
                         end = cur_line + group[1]
-                        cur_dt.addRows(g_rows[pos:end])
+
+                        rows_to_add.extend(g_rows[pos:end])
                         create_new = False
 
                 cur_line += group[1]
 
+    cur_dt.addRows(rows_to_add)
+    rows_to_add = []
     tables.append(cur_dt)
 
     prev_group = None
@@ -144,7 +133,7 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
         if prev_group is not None:
             if prev_group[0] == group[0]:
                 # merge
-                prev_group = (prev_group[0], prev_group[1] + group[1])
+                prev_group = ( prev_group[0], prev_group[1] + group[1])
             else:
                 agg_groups.append(prev_group)
                 prev_group = group
@@ -155,31 +144,59 @@ def parseDataTables(yacpParser, url=None, batches=80,max_tables=3):
     log.info("TABLE SHAPE", groups=agg_groups, filename=url)
 
     if len(tables) > max_tables:
-        raise YACParserException("Too many tables (#" + str(len(tables)) + ") shapes:" + str(agg_groups))
-    return tables
+        if raiseError:
+            raise YACParserException("Too many tables (#" + str(len(tables)) + ") shapes:" + str(agg_groups))
+    if max_tables==1:
+        return tables[0]
+    else:
+        return tables
 
 
 class DataTable(object):
 
     def __init__(self, meta, cols, url, id, comments=None, headers=None):
         self.meta = meta
-        self.noCols = cols
-        self.noRows = 0
+        self.no_cols = cols
+        self.no_rows = 0
         self.url=url
         self.id=id
 
         self.comments = comments if comments else []
         self.header_rows = headers if headers else []
         self.id = None
-        self.columnIDs=['col{}'.format(i) for i in range(1, self.noCols+1)]
+        if len(self.header_rows)==1:
+            self.columnIDs=self.header_rows[0]
+        elif len(self.header_rows) > 1:
+            self.columnIDs = self.header_rows[0]
+        else:
+            self.columnIDs =['col{}'.format(i) for i in range(1, self.no_cols+1)]
+
+        self.column_metadata={i:{}for i in range(0,len(self.columnIDs))}
+
         self.data=pd.DataFrame(columns=self.columnIDs)
-        self.header_cols=list(map(list, zip(*self.header_rows)))
+
+
+
+    def basic(self):
+        b={
+            'rows':self.no_rows,
+            'cols':self.no_cols,
+            'uri':self.url
+
+        }
+        return b
 
     def addRows(self, rows):
-
-        df = pd.DataFrame(list(rows), columns=self.columnIDs)
-        self.data=pd.concat([self.data,df])
-        self.noRows=self.data.shape[1]
+        try:
+            df = pd.DataFrame(list(rows), columns=self.columnIDs)
+            self.data=pd.concat([self.data,df])
+            self.no_rows=self.data.shape[1]
+        except Exception as e:
+            print self.data
+            print self.columnIDs
+            print len(list(rows))
+            print list(rows)[0]
+            print self.header_rows
 
     def rows(self):
         return [row for row in self.rowIter()]
@@ -188,9 +205,100 @@ class DataTable(object):
         for row in self.data.itertuples():
             yield list(row[1:])
 
-    def columns(self):
-        return [collist for collist in self.columnIter()]
 
     def columnIter(self):
         for colName in self.columnIDs:
             yield self.data[colName].tolist()
+
+    def columns(self):
+        return [collist for collist in self.columnIter()]
+
+    #def columns(self):
+    #    return [ {'data':col,'meta':self.column_metadata[i]} for i, col in enumerate(self.columnIter())  ]
+
+
+
+    def describe_colmeta(self):
+
+        d={}
+        for i in range(0, self.no_cols):
+            dd=d.setdefault('col{}'.format(i+1),{})
+            for a,h in enumerate(self.header_rows):
+                dd['header{}'.format(a)]=h[i]
+
+            for k,v in self.column_metadata[i].items():
+                dd[k]=v
+        #     if 'data_type'  in self.column_metadata[i]:
+        #         dd['data_type']=self.column_metadata[i]['data_type']
+        #     if 'col_patterns' in self.column_metadata[i]:
+        #         dd['col_patterns']=self.column_metadata[i]['col_patterns']
+        #     if 'col_stats' in self.column_metadata[i]:
+        #         v = self.column_metadata[i]['col_stats']
+        #         dd['selectivity']=v['selectivity']['avg']
+        #         dd['selectivity_min'] = v['selectivity']['min']
+        #         dd['selectivity_max'] = v['selectivity']['max']
+        #         dd['unique'] = v['uniques']
+        #         dd['char_length_avg'] = v['char_length']['avg']
+        #         dd['char_length_min'] = v['char_length']['min']
+        #         dd['char_length_max'] = v['char_length']['max']
+        #         dd['most_value'] = v['top_values'][0]
+        #         dd['empty'] = v['empty']
+        #
+        # if 'table_tane' in self.meta:
+        #     for i,k in enumerate(self.meta['table_tane']['suggested_keys']):
+        #         for ci in range(0, self.no_cols):
+        #             d['col{}'.format(ci + 1)]['pk{}'.format(i)]= ci in k
+
+
+        return pd.DataFrame(d)
+
+
+    def generate(self, delimiter=',', newline='\n', header=True, comments=True):
+        """
+        :param delimiter: The delimiter symbol. The default is ",".
+        :param newline: The line separator. The default is "\n".
+        :param header: There will be a header in the output (if no header detected then col0,col1, ...)
+        :param commentPrefix: The prefix for comments in the first rows. If false, any comments will be ignored.
+        :return: A string representation of the CSV table
+        """
+        csvstream = StringIO()
+        w = unicodecsv.writer(csvstream, encoding="utf-8", delimiter=delimiter, lineterminator=newline)
+
+        # write description lines at top
+        if comments:
+            for line in self.descriptionLines:
+                w.writerow(line)
+        if header:
+            for header in self.header_rows:
+                w.writerow(header)
+        for row in self.rowIter():
+            w.writerow(row)
+        return csvstream.getvalue()
+
+
+    def get_meta(self):
+
+        meta={'table':{
+            'rows': self.no_rows,
+            'cols': self.no_cols,
+            'uri': self.url,
+            'comment_lines': len(self.comments),
+            'header_lines': len(self.header_rows)
+        }}
+        for k,v in self.meta.items():
+
+            meta['table'][k]=v
+
+        d = {}
+        meta['column']=d
+        for i in range(0, self.no_cols):
+            dd = d.setdefault('col{}'.format(i + 1), {})
+            for a, h in enumerate(self.header_rows):
+                dd['header{}'.format(a)] = h[i]
+
+            for k, v in self.column_metadata[i].items():
+                dd[k] = v
+
+        return meta
+
+

@@ -1,14 +1,170 @@
-from pyyacp import simple_type_detection
+import itertools
+
+from pyyacp import column_format_detector
+from pyyacp.profiler import simple_type_detection
 
 DESCRIPTION_CONFIDENCE = 10
 
 import structlog
 log = structlog.get_logger()
 
+class SimpleStructureDetector(object):
+    # i would include emtpy lines for now
+    def guess_description_lines(self,sample):
+        return guess_description_lines(sample)
+    # allow multple header lines if existing
+    def guess_headers(self,sample, verbose=False):
+        descriptionLines = self.guess_description_lines(sample)
+        description = len(descriptionLines)
+        if description:
+            sample = sample[description:]
+        emptyColumns = detect_empty_columns(sample)
+        return guess_headers(sample, emptyColumns)
+
+    def guess_columns(self,sample):
+        descriptionLines = self.guess_description_lines(sample)
+        description = len(descriptionLines)
+        return len(sample[description])
+
+
+ascii=set(['a','A','b','B'])
+digits=set(['1','0'])
+class AdvanceStructureDetector(object):
+
+    # i would include emtpy lines for now
+    def guess_description_lines(self, sample):
+        r_len = [len(row) for row in sample]
+        grouped_L = [(k, sum(1 for i in g)) for k, g in itertools.groupby(r_len)]
+        est_colNo = _most_common_oneliner(r_len)
+        c_lines=0
+        cur_line = 0
+
+        for i, group in enumerate(grouped_L):
+            if group[0] < est_colNo:
+                # We consider this as a comment line
+                c_lines += group[1]
+            else:
+                # same length as the data rows, we should check if there are empty columns
+                #if there are more than 50% empty columns, consider this a header line
+                for i in range(cur_line, group[1] + cur_line):
+                    empty_cells = 0.0
+                    for a, cell in enumerate(reversed(sample[i])):
+                        if len(cell.strip()) == 0 and empty_cells == a:
+                            empty_cells += 1
+                    if empty_cells / len(sample[i]) > 0.5:
+                        c_lines += 1
+                    else:
+                        break
+
+            cur_line += group[1]
+        return sample[0:c_lines]
+
+
+    def _guess_header_by_group(self, groups, verbose=False):
+        if verbose:
+            print " _guess_header_by_group({})".format(groups)
+        if len(groups)==1:
+            ##asume no header
+            return -1
+        elif len(groups)==2:
+            #two groups, very likely a header
+            return groups[0][1]
+        else:
+            h = None
+            header = -1
+            for i, pat in enumerate(groups):
+                if h is not None:
+                    if verbose:
+                        print "  cell_pattern-{}: {}".format(i, pat)
+                    h_sym = set(h)
+                    p_sym = set(pat)
+                    delta_sym = h_sym.symmetric_difference(p_sym)
+                    new_sym = p_sym - h_sym
+
+                    # Do we have a header?
+                    # 1)
+                    if verbose:
+                        print "   ascii in h:{},digits in new:{}".format(h_sym.issubset(ascii),
+                                                                         len(new_sym) > 0 and new_sym.issubset(
+                                                                             digits))
+                    digits_added = h_sym.issubset(ascii) and len(new_sym) > 0 and new_sym.issubset(digits)
+                    # 2) new symbols
+                    new_symbols = len(new_sym) > 0 and not new_sym.issubset(h_sym)
+                    if verbose:
+                        print "   new symbols added:{} subset:{}".format(new_symbols,new_sym.issubset(h_sym))
+                    is_header = (digits_added or new_symbols)
+                    if verbose:
+                        print "   header?: {} h:{} vs p{}, delta:{}, new:{}".format(is_header, h_sym, p_sym, delta_sym,
+                                                                                 new_sym)
+                    if is_header:
+                        if verbose:
+                            print "   >>>>we think we have a header: {}".format(h)
+                        header = i - 1
+                    elif header != -1:
+                        break
+                h = pat
+            return header
+
+    # allow multple header lines if existing
+    def guess_headers(self, sample, verbose=False):
+        descriptionLines = self.guess_description_lines(sample)
+        #skip description lines
+        sample = sample[len(descriptionLines):]
+        #check how many row/col groups we still have
+        r_len = [len(row) for row in sample]
+        grouped_L = [(k, sum(1 for i in g)) for k, g in itertools.groupby(r_len)]
+        est_colNo = _most_common_oneliner(r_len)
+
+        if grouped_L[0][0]==est_colNo:
+            ##lets assume that the first group is the one we use for the header detection
+            ##also make sure that the length is the estimated col length
+
+            ##convert the rows into columns
+            cols = map(list, zip(*sample))
+            guessed_col_header = []
+            for col in cols:
+                if verbose:
+                    print "Column:{}".format(col)
+                pattern = column_format_detector.translate_all(col,sort=False)
+                L1 = column_format_detector.l1_aggregate(pattern)
+                symbols = column_format_detector.l2_aggregate(grouped=L1)
+                d=[ (k[0],sum([cc[1] for cc in k[2]])) for k in symbols]
+                p_guess_headers = self._guess_header_by_group(d,verbose=verbose)
+                if verbose:
+                    print p_guess_headers
+                    print 'symbols:{}'.format(symbols)
+                guessed_col_header.append(p_guess_headers)
+
+            def mode(array):
+                most = max(list(map(array.count, array)))
+                return list(set(filter(lambda x: array.count(x) == most, array)))
+
+            #print(guessed_col_header)
+            mc = _most_common_oneliner(guessed_col_header)
+            max_h = max(guessed_col_header) if len(guessed_col_header)>0 else 0
+            #print sample
+            if verbose:
+                print "most_common:{}, max:{}, modes:{}, {}".format(mc, max_h, mode(guessed_col_header), guessed_col_header)
+            if mc >= 0:
+                return sample[0: mc]
+            return []
+
+        else:
+            raise ValueError("Cannot detect header, too many groups or row length does not match")
+
+
+
+    def guess_columns(self, sample):
+        r_len = [len(row) for row in sample]
+        return _most_common_oneliner(r_len)
+
+def _most_common_oneliner(L):
+    return max(itertools.groupby(sorted(L)),
+               key=lambda (x, v): (len(list(v)), -L.index(x))
+               )[0] if len(L) > 0 else None
+
 
 def guess_description_lines(sample):
-
-
     first_lines = True
     conf = 0
     description_lines = 0
@@ -68,7 +224,7 @@ def _detect_header_lines(pending, max_headers=2):
             break
 
         log.debug("HEADER? ", row=row)
-        row_types = [ simple_type_detection.detectType(rowValue) for rowValue in row]
+        row_types = [simple_type_detection.detectType(rowValue) for rowValue in row]
 
         # if first row contains numeric we assume that there is no header
         if i == 0 and ('FLOAT' in row_types or 'NUM' in row_types or 'NUM+' in row_types):
@@ -99,7 +255,7 @@ def _detect_header_lines(pending, max_headers=2):
 def detect_empty_columns(sample):
     empty_col = []
     if len(sample) > 0:
-        columns = [[] for _ in sample[0]]
+        columns = [ [] for _ in sample[1]]
         for row in sample:
             for j, c in enumerate(row):
                 columns[j].append(c)

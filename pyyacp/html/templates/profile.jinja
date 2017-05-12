@@ -1,0 +1,118 @@
+{% extends "base_layout.jinja" %}
+
+
+{% block content %}
+<div class="ui  container">
+    <h2 class="ui divider horizontal header">CSV Profiler</h2>
+
+    <div class="ui text vertical segment ">
+        <div class="ui two column grid">
+            <div class="column">
+                <h3 class="ui divider horizontal header">Table Details</h3>
+                <a href="{{basic.uri}}">{{basic.uri}}</a>
+                <table class="ui very basic table">
+                    <tbody>
+                        <tr>
+                            <td>rows</td>
+                            <td>{{basic.rows}}</td>
+                        </tr>
+                        <tr>
+                            <td>columns</td>
+                            <td>{{basic.cols}}</td>
+                        </tr>
+                        {% if comments| length >0 %}
+                            <tr>
+                                <td>comment</td>
+                                <td>{{comment}}</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="column">
+                <h3 class="ui divider horizontal header">CSV Dialect</h3>
+                <table class="ui very basic table">
+                    <tbody>
+                        <tr>
+                            <td>encoding</td>
+                            <td>{{tmeta.encoding}}</td>
+                        </tr>
+                        {% for v,k in tmeta.dialect.iteritems() %}
+                            <tr>
+                                <td>{{v}}</td>
+                                <td>{{k}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="ui text vertical segment ">
+        {{data}}
+
+        <table class="ui definition teal very compact table">
+            <thead>
+                <tr class="center aligned">
+                    <th></th>
+                    {% for id in  columnIDs %}
+                        <th>{{id}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+
+
+                {% for k in ['data_type','data_class','patterns','stats_top_value','stats_num_rows','stats_distinct','stats_empty'] %}
+                    <tr class="right aligned">
+                        <td>{{k | replace('stats_', '')}}</td>
+                        {% for i in range(0, columnIDs| length,1 ) %}
+                            {% if k in ['data_type','data_class'] %}
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">{{ meta[k]['col'~(i+1)] }}</span></span></td>
+                            {% else %}
+                                <td>{{ meta[k]['col'~(i+1)] }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                    <tr class="right aligned">
+                        <td>value length</td>
+                        {% for i in range(0, columnIDs| length,1 ) %}
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ meta['stats_min_len']['col'~(i+1)] }}</td>
+                                            <td>{{ meta['stats_mean_len']['col'~(i+1)] |round|int}}</td>
+                                            <td>{{ meta['stats_max_len']['col'~(i+1)] }}</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% for k in ['stats_constancy','stats_uniqueness','stats_top_value','c_dist_dist','benford_is','benford_chi','benford_dist'] %}
+                    <tr class="right aligned">
+                        <td>{{k}}</td>
+                        {% for i in range(0, columnIDs| length,1 ) %}
+                            {% if k in ['data_type','data_class'] %}
+                                <td class="center aligned"><span class="ui basic olive label">{{ meta[k]['col'~(i+1)] }}</span></td>
+                            {% else %}
+                                <td>{{ meta[k]['col'~(i+1)] }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+

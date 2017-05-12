@@ -1,0 +1,316 @@
+org_id,name_en,name_de,location_id,floorname,street,zip,city,otype,url
+3628,Wirtschaftsuniversität,Wirtschaftsuniversität,001_40_OG02_500900,,Welthandelsplatz 1,1020,Wien,WU,
+3912,Universitätsrat,Universitätsrat,001_40_OG02_500900,,,,,SO,https://www.wu.ac.at/universitaet/organisation/universitaetsleitung/universitaetsrat/
+3730,Interne Revision,Interne Revision,001_40_OG02_500900,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,ST,
+3671,Rektor/in,Rektor/in,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RT,https://www.wu.ac.at/universitaet/organisation/universitaetsleitung/rektorat/
+3731,Büro des Rektorats,Büro des Rektorats,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,DL,
+3916,Akkreditierungen,Akkreditierungen,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,ST,
+3961,Senior Faculty Recruitment and Welcome Services,Senior Faculty Recruitment and Welcome Services,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,ST,
+3962,Strategische Analysen und Leistungsvereinbarungen,Strategische Analysen und Leistungsvereinbarungen,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,ST,
+3779,Pressesprecherin,Pressesprecherin,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,ST,
+3244,Marketing & Communication,Marketing & Kommunikation,001_40_OG02_502300,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/marketing-kommunikation/aufgaben/
+3581,Sekretariat Marketing & Kommunikation,Sekretariat Marketing & Kommunikation,001_40_OG02_502300,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RF,
+3943,Marketing Master Programme,Marketing Master Programme,001_40_OG02_502300,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/marketing-kommunikation/mitarbeiterinnen/
+3580,Presse,Presse,001_40_OG02_502300,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/presse/pressekontakt/
+3947,Übersetzung,Übersetzung,001_40_OG02_502300,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RF,
+3903,Fundraising und Sponsoring,Fundraising und Sponsoring,001_40_OG02_502300,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/marketing-kommunikation/mitarbeiterinnen/
+3902,Fachbereich Kommunikation,Fachbereich Kommunikation,001_40_OG02_502300,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/marketing-kommunikation/mitarbeiterinnen/
+3904,Fachbereich Events,Fachbereich Events,001_40_OG02_502300,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/marketing-kommunikation/mitarbeiterinnen/
+4023,WU Shop,WU Shop,001_10_EG01_110200,,Welthandelsplatz 1,1020,Wien,RF,
+3615,WU Alumni-Club,WU Alumni-Club,002_00_OG02_004200,Gebäude EA,Welthandelsplatz 1,1020,Wien,AV,http://www.wu.ac.at/alumni/
+3906,Geschäftsführung WU Alumni Club,Geschäftsführung WU Alumni Club,002_00_OG02_004200,Gebäude EA,Welthandelsplatz 1,1020,Wien,AV,
+3907,Marketing & Events WU Alumni Club,Marketing & Events WU Alumni Club,002_00_OG02_004200,Gebäude EA,Welthandelsplatz 1,1020,Wien,AV,
+3908,Sekretariat WU Alumni Club,Sekretariat WU Alumni Club,002_00_OG02_004200,Gebäude EA,Welthandelsplatz 1,1020,Wien,AV,
+3612,VR für Lehre und Studierende,VR für Lehre und Studierende,001_10_OG04_212900,"Gebäude LC, Ebene +5",Welthandelsplatz 1,1020,Wien,RT,https://www.wu.ac.at/universitaet/organisation/universitaetsleitung/rektorat/
+3767,Assistent/inn/en VR Lehre,Assistent/inn/en VR Lehre,001_10_OG04_212900,"Gebäude LC, Ebene +5",Welthandelsplatz 1,1020,Wien,ST,https://www.wu.ac.at/universitaet/organisation/universitaetsleitung/rektorat/
+3918,Studiensupport,Studiensupport,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/studiensupport/
+4003,Stabstelle für Ombudsing und Studierende mit Behinderung,Stabstelle für Ombudsing und Studierende mit Behinderung,001_10_OG01_212100,Gebäude LC,Welthandelsplatz 1,1020,Wien,ST,
+3602,Studieninformation,Studieninformation,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,VA,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/studiensupport/studieninformation/
+3998,Infodesk Studieninformation,Infodesk Studieninformation,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,RF,
+3441,Prüfungsorganisation,Prüfungsorganisation,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,VA,https://www.wu.ac.at/studierende/study-service-center/
+3522,Doktoratsstudium,Doktoratsstudium,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/programs/phd
+3722,Studienzulassung,Studienzulassung,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,VA,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/studiensupport/studienzulassung/
+3774,Admin. Büro,Admin. Büro,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,RF,
+3775,EDV-Referat,EDV-Referat,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,RF,
+3529,Evidenz,Evidenz,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/studierende/study-service-center/
+3528,Auslandsreferat,Auslandsreferat,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/studierende/study-service-center/
+3598,Studienrecht & Anerkennung,Studienrecht & Anerkennung,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/studienrecht-anerkennung/
+3781,Studienrecht,Studienrecht,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/studienrecht-anerkennung/aufgaben-und-taetigkeitsbereiche/
+3527,Anerkennung,Anerkennung,001_10_OG01_212100,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/studienrecht-anerkennung/aufgaben-und-taetigkeitsbereiche/
+3917,Programmmanagement und Lehr-/Lernsupport,Programmmanagement und Lehr-/Lernsupport,001_10_OG04_212900,"Gebäude LC, Ebene +5",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/programmmanagement-und-lehr-lernsupport/
+3976,Strategische Projekte in der Lehre,Strategische Projekte in der Lehre,001_10_OG04_212900,"Gebäude LC, Ebene +5",Welthandelsplatz 1,1020,Wien,ST,
+3977,Lehrorganisation,Lehrorganisation,001_10_OG04_212900,"Gebäude LC, Ebene +5",Welthandelsplatz 1,1020,Wien,VA,
+3725,Teaching Evaluation and Quality Management,Evaluierung & Qualitätsentwicklung,001_10_OG04_212900,"Gebäude LC, Ebene +5",Welthandelsplatz 1,1020,Wien,VA,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/programmmanagement-und-lehr-lernsupport/evaluierung-qualitaetsentwicklung/
+3919,Akademisches Controlling,Akademisches Controlling,001_10_OG04_212900,"Gebäude LC, Ebene +5",Welthandelsplatz 1,1020,Wien,VA,
+3920,Teaching & Learning Services,Teaching & Learning Services,001_10_OG04_212900,"Gebäude LC, Ebene +5",Welthandelsplatz 1,1020,Wien,VA,
+3357,Raiffeisen Language Resource Center,Sprachlernzentrum,001_10_OG01_110200,"Gebäude LC, Ebene +2",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/raiffeisen-sprachlernzentrum/
+3515,Zentrum für Auslandsstudien (ZAS),Zentrum für Auslandsstudien (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,DL,http://www.wu.ac.at/io
+3720,Undergraduate Austausch & Internationale Kurzstudienprogramme (ZAS),Undergraduate Austausch & Internationale Kurzstudienprogramme (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/io
+3590,"Asien, Amerika & Australien (ZAS)","Asien, Amerika & Australien (ZAS)",001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/io
+3592,"Europa, JOSZEF-Studienprogramm (ZAS)","Europa, JOSZEF-Studienprogramm (ZAS)",001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/io
+3895,Internationale Sommeruniversitäten (ZAS),Internationale Sommeruniversitäten (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/io
+3719,Graduate Austausch & Service Management (ZAS),Graduate Austausch & Service Management (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/io
+3596,Graduate Austausch (ZAS),Graduate Austausch (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/io
+3897,"Int. Lehre, IBW-Auslandserfahrung (ZAS)","Int. Lehre, IBW-Auslandserfahrung (ZAS)",001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/io
+3737,Stipendien (ZAS),Stipendien (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/io
+3587,OK Programm (ZAS),OK Programm (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/io
+3589,Studierendenberatung & Front Office (ZAS),Studierendenberatung & Front Office (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/io
+3360,Zentrum für Auslandsstudien (ZAS),Zentrum für Auslandsstudien (ZAS),001_10_OG03_210500,"Gebäude LC, Ebene 4",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/io
+3361,Zentrum für Berufsplanung (ZBP),Zentrum für Berufsplanung (ZBP),001_10_U101_410700,"LC, EG unteres Zwischengeschoss",Welthandelsplatz 1,1020,Wien,AV,https://www.wu.ac.at/universitaet/organisation/wu-zbp-career-center/
+3610,VR für Finanzen,VR für Finanzen,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RT,https://www.wu.ac.at/universitaet/organisation/universitaetsleitung/rektorat/
+3727,Finanz- und Rechnungswesen,Finanz- und Rechnungswesen,001_40_OG02_500900,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,DL,
+3838,Sekretariat Finanz- und Rechnungswesen,Sekretariat Finanz- und Rechnungswesen,001_40_OG01_500300,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,VA,
+3562,Finanzbuchhaltung,Finanzbuchhaltung,001_40_OG01_505100,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,VA,
+3567,Besoldung/Personalverrechnung,Besoldung/Personalverrechnung,001_40_OG01_500500,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,VA,
+3728,Controlling,Controlling,001_40_OG01_504500,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,DL,
+3757,SAP &  Sonderprojekte,SAP &  Sonderprojekte,001_40_OG02_500900,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,ST,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/sap-sonderprojekte/
+3770,"Referat Abgeltung der Lehre, Sozialversicherungsangelegenheiten","Referat Abgeltung der Lehre, Sozialversicherungsangelegenheiten",001_40_OG02_500900,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/sap-sonderprojekte/
+3726,Procurement Department and Administration Office Director of Administration's Office,Campusmanagement,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/campusmanagement/
+3759,Büro Campusmanagement,Büro Campusmanagement,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,VA,
+3762,Einkaufsmanagement,Einkaufsmanagement,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,VA,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/campusmanagement/leitung-campusmanagement/einkaufsmanagement/
+3760,Facility Management,Facility Management,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,VA,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/campusmanagement/
+3840,Techn. Dienste Facility Management,Techn. Dienste Facility Management,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,RF,
+3843,Objektbetreuung,Objektbetreuung,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,RF,
+3839,Back Office,Back Office Facility Management,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,RF,
+3766,Post,Post,001_40_EG01_002900,,Welthandelsplatz 1,1020,Wien,RF,
+3899,Sicherheits- und Veranstaltungsmanagement,Sicherheits- und Veranstaltungsmanagement,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,VA,
+3841,Sicherheit & Veranstaltungen,Sicherheit & Veranstaltungen,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,RF,
+3764,Arbeitnehmer/innenschutz,Arbeitnehmer/innenschutz,001_40_EG01_505800,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,RF,
+4001,Infodesk LC,Infodesk LC,001_10_EG01_110800,"Gebäude LC, Ebene 0",Welthandelsplatz 1,1020,Wien,RF,
+3613,VR für Forschung,VR für Forschung,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RT,https://www.wu.ac.at/universitaet/organisation/universitaetsleitung/rektorat/
+3718,Forschungsservice,Forschungsservice,002_00_OG02_004600,"Gebäude EA, 2. OG",Welthandelsplatz 1,1020,Wien,DL,http://www.wu.ac.at/research/service
+3343,Universitätsbibliothek,Universitätsbibliothek,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,DL,http://www.wu.ac.at/library
+3517,Bibliothekssekretariat,Bibliothekssekretariat,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/library
+3984,Benutzungsmanagement,Benutzungsmanagement,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,VA,
+3651,Betrieb Bibliothekszentrum,Betrieb Bibliothekszentrum,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/library
+3535,Technische Buchbearbeitung und Regalpflege UB,Technische Buchbearbeitung und Regalpflege UB,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/library
+3558,Bestandsmanagement,Bestandsmanagement,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,VA,
+3965,ePub and Open Access,Elektronisches Publizieren und Open Access,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/library
+3934,e-Ressourcen und Zeitschriften,e-Ressourcen und Zeitschriften,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/library
+3959,e-Ressourcen Management,e-Ressourcen Management,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,
+3520,Zeitschriftenmanagement,Zeitschriftenmanagement,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/library
+3518,Medienmanagement,Medienmanagement,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/library
+3519,Koordination Erwerbung,Koordination Erwerbung,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/library
+3555,Servicemanagement,Servicemanagement,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/library
+3980,Informationskompetenz UB,Informationskompetenz UB,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,
+3627,Fernleihe/Doc-Delivery,Fernleihe/Doc-Delivery,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/library
+3540,IT/Systembibliothekar,IT/Systembibliothekar,001_10_OG02_211500,Gebäude LC,Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/library
+4016,Spezialbibliotheken,Spezialbibliotheken,001_10_OG02_211500,,,,,VA,
+3981,Bibliothek Recht,Bibliothek Recht,001_40_EG01_001000,Gebäude D3,Welthandelsplatz 1,1020,Wien,RF,
+3982,Bibliothek Sozialwissenschaften,Bibliothek Sozialwissenschaften,001_50_EG01_023700,Gebäude D4,Welthandelsplatz 1,1020,Wien,RF,
+3983,Bibliothek Wirtschaftssprachen,Bibliothek Wirtschaftssprachen,001_30_EG01_031700,"Gebäude D2, Eingang D",Welthandelsplatz 1,1020,Wien,RF,
+4025,Universitätsarchiv,Universitätsarchiv,001_10_OG02_211500,,Welthandelsplatz 1,1020,Wien,VA,
+3480,IT-Services,IT-SERVICES,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,DL,http://www.wu.ac.at/it/
+3513,Administration Office IT-Services,Administration Office IT-Services,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,RF,http://www.wu.ac.at/it/
+3944,Project Development,Project Development,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,ST,http://www.wu.ac.at/it/
+3975,Support Center,Support Center,001_10_E101_410302,"Gebäude LC, Ebene 1",Welthandelsplatz 1,1020,Wien,VA,
+3512,Client Infrastructure,Client Infrastructure,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/it/
+3509,Server Infrastructure,Server Infrastructure,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/it/
+3508,Network Infrastructure,Network Infrastructure,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/it/
+4017,Telefonvermittlung,Telefonvermittlung,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,RF,
+3510,Software Development,Software Development,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/it/
+3511,Media Development,Media Development,001_10_OG04_412400,"Gebäude LC, Ebene 5",Welthandelsplatz 1,1020,Wien,VA,http://www.wu.ac.at/media/
+3780,Programmdirektor Internationale Lehre,Programmdirektor Internationale Lehre,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,VA,
+3960,VR für Personal,VR für Personal,001_40_OG02_500900,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,RT,
+3340,Personnel Office,Personalabteilung,001_40_OG01_502800,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/personalabteilung/
+3823,Personalentwicklung und Personalplanung,Personalentwicklung und Personalplanung,001_40_OG01_501200,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/personalentwicklung-und-personalplanung/
+3356,Rechtsabteilung,Rechtsabteilung,001_40_OG02_500900,"Gebäude AD, Ebene 1",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/dienstleistungseinrichtungen/rechtsabteilung/
+3464,Büro des Senats,Büro des Senats,001_40_OG02_502600,"Gebäude AD, Ebene 2",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/universitaetsleitung/senat/
+3777,Interessensvertretungen,Interessensvertretungen,001_40_OG02_500900,,,,,IV,
+3790,Betriebsrat für das allgemeine Personal,Betriebsrat für das allgemeine Personal,001_40_EG01_503000,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/interessensvertretungen/betriebsrat/
+3791,Betriebsrat für Universitätslehrer/innen,Betriebsrat für Universitätslehrer/innen,001_40_EG01_502900,"Gebäude AD, Ebene 0",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/interessensvertretungen/workscouncilacademic/
+3778,ÖH,ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,IV,http://www.oeh-wu.at/
+3857,Vorstand ÖH,Vorstand ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3911,Sekretariat ÖH,Sekretariat ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3860,Referat für Wirtschaft ÖH,Referat für Wirtschaft ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3861,Referat für Presse & Öffentlichkeitsarbeit ÖH,Referat für Presse & Öffentlichkeitsarbeit ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3862,Referat für Bildungspolitik & WU Check ÖH,Referat für Bildungspolitik & WU Check ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3863,Referat für ausländische Studierende ÖH,Referat für ausländische Studierende ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3865,Referat für Soziales ÖH,Referat für Soziales ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3866,Referat für Gleichbehandlungsfragen ÖH,Referat für Gleichbehandlungsfragen ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3967,Beratungszentrum ÖH,Beratungszentrum ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3867,Referat für Internationales ÖH,Referat für Internationales ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3868,Referat für Projekte ÖH,Referat für Projekte ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+4004,Referat für Umwelt ÖH,Referat für Umwelt ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+4005,Referat für Kultur ÖH,Referat für Kultur ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+4010,Referat für Organisation ÖH,Referat für Organisation ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3929,Referat für Sport ÖH,Referat für Sport ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3966,Bücherbörse ÖH,Bücherbörse ÖH,001_20_OG03_042200,"Gebäude TC, 3. OG",Welthandelsplatz 1,1020,Wien,RF,
+3930,EDV ÖH,EDV ÖH,001_30_EG01_556200,Gebäude SC,Welthandelsplatz 1,1020,Wien,RF,
+3684,Verband der Mitarbeiter/innen in Forschung und Lehre,Verband der Mitarbeiter/innen in Forschung und Lehre,001_40_OG02_500900,Gebäude D2,Welthandelsplatz 1,1020,Wien,RF,https://www.wu.ac.at/vmfl/
+3715,Büro des Arbeitskreises für Gleichbehandlungsfragen,Büro des Arbeitskreises für Gleichbehandlungsfragen,001_40_OG02_500900,"Gebäude D1, 2. OG",Welthandelsplatz 1,1020,Wien,DL,https://www.wu.ac.at/universitaet/organisation/interessensvertretungen/equaltreatment/
+3348,Fachbereiche,Fachbereiche,001_40_OG02_500900,,,,,OF,
+3741,Marketing,Marketing,001_40_OG02_500900,,Franz Klein Gasse 1,WIEN,1190,FB,
+3743,Finanzdienstleistungen und Rechnungswesen,Finanzdienstleistungen und Rechnungswesen,001_40_OG02_500900,,,,,FB,
+3744,Management,Management,001_40_OG02_500900,,,,,FB,
+3745,Unternehmensführung und Strategie,Unternehmensführung und Strategie,001_40_OG02_500900,,,,,FB,
+3746,"Informationsverarbeitung, Informationswirtschaft und Prozessmanagement","Informationsverarbeitung, Informationswirtschaft und Prozessmanagement",001_40_OG02_500900,,,,,FB,
+3747,Volkswirtschaft,Volkswirtschaft,001_40_OG02_500900,,,,,FB,
+3748,Rechtswissenschaften,Rechtswissenschaften,001_40_OG02_500900,,,,,FB,
+3749,Sozialwissenschaften,Sozialwissenschaften,001_40_OG02_500900,,,,,FB,
+3750,Fremdsprachen und Wirtschaftskommunikation,Fremdsprachen und Wirtschaftskommunikation,001_40_OG02_500900,,,,,FB,
+3751,Mathematik und Statistik,Mathematik und Statistik,001_40_OG02_500900,,,,,FB,
+3471,Internationales,Internationales,001_40_OG02_500900,,,,,FB,
+3622,Zentrum für Auslandsstudien (LV),Zentrum für Auslandsstudien (LV),001_40_OG02_500900,"Kern B, 2. OG",Augasse 2-6,1090,Wien,IN,http://www.wu.ac.at/io
+3623,Zentrum für Auslandsstudien (LV),Zentrum für Auslandsstudien (LV),001_40_OG02_500900,"Kern B, 2. OG",Augasse 2-6,1090,Wien,AB,http://www.wu.ac.at/io
+3792,Departments,Departments,001_40_OG02_500900,,,,,KN,
+3799,"Finance, Accounting and Statistics","Finance, Accounting and Statistics",001_50_OG04_020100,"Gebäude D3, D4",Welthandelsplatz 1,1020,Wien,DP,http://www.wu.ac.at/fas
+3989,Department-Office FAS,Department-Office FASd4,001_50_OG04_020100,"Gebäude D4, Ebene 4",Welthandelsplatz 1,1020,Wien,AI,https://www.wu.ac.at/fas/structure/office-fas-d4/
+3938,"Institute for Finance, Banking and Insurance","Finance, Banking and Insurance",001_50_OG04_020100,"Gebäude D4, Ebene 4",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/finance
+3804,Institute for Statistics and Mathematics,Statistics and Mathematics,001_50_OG04_020100,"Gebäude D4, Ebene 4",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/statmath
+3436,Institute for Accounting and Auditing,Accounting and Auditing,001_40_OG03_003000,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,
+3489,Tax Management Group,Betriebswirtschaftliche Steuerlehre,001_40_OG03_003000,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/taxmanagement
+3996,International Accounting Group,International Accounting,001_40_OG03_003000,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,AB,
+4019,"Accounting, Taxation and Auditing","Rechnungswesen, Steuern und Jahresabschlussprüfung",001_40_OG03_003000,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,AB,
+3710,Management Accounting and Control Group,Unternehmensrechnung und Controlling,001_40_OG03_003000,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/uco/
+3488,Financial Accounting and Auditing Group,Unternehmensrechnung und Revision,001_40_OG03_003000,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/revision/
+3909,Institute for Financial Research,Financial Research,001_50_OG04_020100,"Gebäude D4, Ebene 4",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/ifr
+3805,Information Systems and Operations,Informationsverarbeitung u Prozessmanag.,001_30_OG02_012400,"Gebäude D2, Eingang C, Ebene 1-3",Welthandelsplatz 1,1020,Wien,DP,
+3999,Sekretariat IPM,Sekretariat IPM,001_30_OG02_012400,"Gebäude D2, Eingang C",Welthandelsplatz 1,1020,Wien,AI,
+3818,Management Information Systems,Betriebswirtschaftslehre und Wirtschaftsinformatik,001_30_OG02_012400,"Gebäude D2, Eingang C",Welthandelsplatz 1,1020,Wien,IN,http://ec.wu.ac.at
+3956,Institute for Information Management and Control,Information Management and Control,001_30_OG02_012400,"Gebäude D2, Eingang C",Welthandelsplatz 1,1020,Wien,IN,
+3452,Information Business,Informationswirtschaft,001_30_OG02_012400,"Gebäude D2, Eingang C, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,http://www.ai.wu.ac.at
+3276,Applied Information Technology with Focus on IT in Organization,Informationswirtschaft (Mendling),001_30_OG02_012400,"Gebäude D2, Eingang C, Ebene 3",Welthandelsplatz 1,1020,Wien,AE,https://www.wu.ac.at/en/infobiz/
+3288,Applied Information Technology,Informationswirtschaft (Polleres),001_30_OG02_012400,"Gebäude D2, Eingang C, Ebene 3",Welthandelsplatz 1,1020,Wien,AE,http://www.ai.wu.ac.at/
+3817,Production Management,Produktionsmanagement,001_30_OG02_012400,"Gebäude D2, Eingang C, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://prodman.wu.ac.at
+3289,Computer Integrated Manufacturing (CIM),Produktionsmanagement (Jammernegg),001_30_OG02_012400,"Gebäude D2, Eingang C, Ebene 2",Welthandelsplatz 1,1020,Wien,AE,http://prodman.wu.ac.at/
+3421,Produktionsmanagement (Taudes),Produktionsmanagement (Taudes),001_30_OG02_012400,"Gebäude D2, Eingang C, Ebene 2",Welthandelsplatz 1,1020,Wien,AE,http://prodman.wu.ac.at/
+3819,Information Systems and New Media,Wirtschaftsinformatik und Neue Medien,001_30_OG02_012400,"Gebäude D2, Eingang C",Welthandelsplatz 1,1020,Wien,IN,http://nm.wu.ac.at
+3797,Management,Management,001_30_OG01_530200,"Gebäude D2, Eingang B, Ebene 1/2",Welthandelsplatz 1,1020,Wien,DP,http://www.wu.ac.at/management
+3846,Business Education,Wirtschaftspädagogik,001_30_OG01_530200,"Gebäude D2, Eingang B",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/wipaed
+3921,Education Sciences,Bildungswissenschaft,001_30_OG01_530200,"Gebäude D2, Eingang E, 2. Stock",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/bildungswissenschaft
+3847,Human Resource Management,Personalmanagement,001_30_OG01_530200,"Gebäude D2, Eingang B",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/persm
+3848,Change Management and Management Development,Change Management und Management Development,001_30_OG01_530200,"Gebäude D2, Eingang B",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/cmmd/
+3714,Institute for Gender and Diversity in Organizations,Institut für Gender und Diversität in Organisationen,001_30_OG01_530200,"Gebäude D2, Eingang B, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/gender/
+3318,Interdisciplinary Institute for Management and Organizational Behavior,Interdisziplinäres Institut für verhaltenswissenschaftlich orientiertes Management,001_30_OG01_530200,"Gebäude D2, Eingang B, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/ivm
+3789,Institute for Nonprofit Management,Institut für Nonprofit Management,001_30_OG01_530200,"Gebäude D2, Eingang B, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/npo
+3994,Institute for Public Management and Governance,Public Management und Governance,001_30_OG01_053700,"Gebäude D2, Eingang B",Welthandelsplatz 1,1020,Wien,IN,
+3995,Institute for Organization Studies,Organization Studies,001_30_OG01_530200,"Gebäude D2, Eingang B",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/orgstudies/en/
+3798,Marketing,Marketing,001_30_OG02_515000,"Gebäude D2, Eingang A, Ebene 1/2",Welthandelsplatz 1,1020,Wien,DP,
+3342,Marketing Management,Marketing-Management,001_30_OG02_515000,"Gebäude D2, Eingang A",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/mm/
+4008,Interactive Marketing and Social Media,Interactive Marketing and Social Media,001_30_OG02_515000,"Gebäude D2, Eingang A",Welthandelsplatz 1,1020,Wien,IN,
+3811,International Marketing Management,Internationales Marketing Management,001_30_OG02_510900,"Gebäude D2, Eingang A, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/imm/
+3812,Retailing and Marketing,Handel und Marketing,001_30_OG02_515000,"Gebäude D2, Eingang A, Ebene 1",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/retail
+3813,Marketing and Consumer Research,Marketing und KonsumentInnenforschung,001_30_OG02_515000,"Gebäude D2, Eingang A",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/mcore
+3252,Service Marketing and Tourism,Service Marketing und Tourismus,001_30_OG02_515000,"Gebäude D2, Eingang A",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/itf
+3795,Strategy and Innovation,Strategy and Innovation,D5_OG06_000090,"Gebäude D5, Ebenen 4-6",Welthandelsplatz 1,1020,Wien,DP,http://www.wu.ac.at/ufi
+3783,Corporate Governance,Corporate Governance,D5_OG06_000090,"Gebäude D5, Ebene 5",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/icg
+3942,Institute for Business Policy and Planning,Institute for Business Policy and Planning,001_20_OG03_370800,Gebäude D5,Welthandelsplatz 1,1020,Wien,IN,
+3816,Entrepreneurship and Innovation,Entrepreneurship und Innovation,D5_OG06_000090,"Gebäude D5, Ebene 4",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/entrep/
+3250,Business Organization and Supply Management,Organisation und Materialwirtschaft,D5_OG06_000090,"Gebäude D5, Ebene 6",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/om/
+3987,"Strategie, Technologie und Organisation","Strategie, Technologie und Organisation",D5_OG06_000090,"Gebäude D5, Ebene 5",Welthandelsplatz 1,1020,Wien,IN,
+3332,Strategic Management,Strategisches Management,D5_OG06_000090,"Gebäude D5, Ebene 5",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/ism
+3334,Strategic Management and Management Control,Unternehmensführung,D5_OG06_000090,"Gebäude D5, Ebene 5",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/ifu
+4015,Institute for Higher Education Management,Hochschulmanagement,D5_OG06_000090,"Gebäude D5, Ebene 6",Welthandelsplatz 1,1020,Wien,IN,
+4026,Institute for Markets and Strategy,Markets and Strategy,D5_OG06_000090,Gebäude D5,Welthandelsplatz 1,1020,Wien,IN,https://www.wu.ac.at/ims/
+3742,Projektmanagement Group,Projektmanagement,D5_OG06_000090,"Gebäude D5, Ebene 6",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/pmg
+3800,Global Business and Trade,Welthandel,001_20_OG03_370800,"Gebäude D1, Ebene 4 und 5",Welthandelsplatz 1,1020,Wien,DP,http://www.wu.ac.at/welthandel
+4021,Institute for Export Management,BWL des Außenhandels,001_20_OG03_370800,Gebäude D1,Welthandelsplatz 1,1020,Wien,IN,
+3282,Institute for Export Management,AE Moser,001_20_OG03_370800,Gebäude D1,Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/auha/
+4022,Institute for Export Management,AE Mohr,001_20_OG03_370800,Gebäude D1,Welthandelsplatz 1,1020,Wien,AE,
+3953,Institute for International Business,International Business,001_20_OG03_370800,Gebäude D1,Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/iib
+3948,International Business,International Business (Dikova),001_20_OG03_370800,Gebäude D1,Welthandelsplatz 1,1020,Wien,AE,
+3936,International Business,International Business (Fisch),001_20_OG03_370800,Gebäude D1,Welthandelsplatz 1,1020,Wien,AE,
+4000,International Business (Nell),International Business (Nell),001_20_OG03_370800,"Gebäude D1, Ebene 3",Welthandelsplatz 1,1020,Wien,AE,
+3782,International Business,International Business (Puck),001_20_OG03_370800,Gebäude D1,Welthandelsplatz 1,1020,Wien,AE,
+3937,International Business (Stahl),International Business (Stahl),001_20_OG03_370800,Gebäude D1,Welthandelsplatz 1,1020,Wien,AE,
+3259,Institute for Small Business Management and Entrepreneurship,KMU-Management,001_20_OG03_370800,"Gebäude D1, Ebene 4",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/kmb/
+3246,Transport and Logistics Management,Transportwirtschaft und Logistik,001_20_OG03_370800,"Gebäude D1, Ebene 4",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/itl
+3335,Transportation,Transportwirtschaft und Logistik (Kummer),001_20_OG03_370800,"Gebäude D1, Ebene 4",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/itl
+3784,Transportwirtschaft und Logistik (Wakolbinger),Transportwirtschaft und Logistik (Wakolbinger),001_20_OG03_370800,"Gebäude D1, Ebene 4",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/itl
+3794,Public Law and Tax Law,Öffentliches Recht und Steuerrecht,001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,DP,
+3255,Austrian and European Public Law,Österreichisches und Europäisches Öffentliches Recht,001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/ioer
+3272,Austrian and European Public Law,Österreichisches und Europäisches Öffentliches Recht (Potacs),001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/ioer
+3312,Austrian and European Public Law,Österreichisches und Europäisches Öffentliches Recht (Holoubek),001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/ioer
+3317,Austrian and European Public Law,Österreichisches und Europäisches Öffentliches Recht (Lienbacher),001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/ioer
+3963,Austrian and European Public Law,Österreichisches und Europäisches Öffentliches Recht (Eberhard),001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/ioer
+3248,Austrian and International Tax Law,Österreichisches und Internationales Steuerrecht,001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/taxlaw
+3403,Corporate Tax Group,Unternehmenssteuerrecht,001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/taxlaw
+3853,International Tax Group,Internationales Steuerrecht,001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/taxlaw
+4020,Steuerpolitik u Europäisches Steuerrecht,Steuerpolitik u Europäisches Steuerrecht,001_40_OG02_002700,"Gebäude D3, Ebene 2",Welthandelsplatz 1,1020,Wien,AB,
+3893,Institute for Austrian and European Economic Criminal Law,Österreichisches und Europäisches Wirtschaftsstrafrecht,001_40_OG02_002700,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/wirtschaftsstrafrecht
+3969,Institute for European and International Law,Europarecht und Internationales Recht,001_40_OG02_002700,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/eir
+3935,Europarecht und Internationales Recht (Vranes),Europarecht und Internationales Recht (Vranes),001_40_OG02_002700,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/eir
+3939,Europarecht und Internationales Recht (Grabenwarter),Europarecht und Internationales Recht (Grabenwarter),001_40_OG02_002700,"Gebäude D3, Ebene 3",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/eir
+3793,"Business, Employment and Social Security Law","Unternehmensrecht, Arbeits- und Sozialrecht",001_40_OG01_003700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,DP,http://www.wu.ac.at/businesslaw
+3243,"Civil, Commercial and Securities Law",Zivil- und Unternehmensrecht,001_40_OG01_003700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/privatrecht
+3711,Information Law and Intellectual Property Law Group,Informationsrecht und Immaterialgüterrecht,001_40_OG01_003700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,AB,
+3675,Business Law Group,Unternehmensrecht,001_40_OG01_003700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/privatrecht
+3325,Company Law,Unternehmensrecht (Bollenberger/Kodek),001_40_OG01_003700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/privatrecht
+3433,Unternehmensrecht (Kalss),Unternehmensrecht (Kalss),001_40_OG01_003700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/privatrecht
+3321,"Civil, Commercial and Securities Law",Unternehmensrecht (Nowotny Ch.),001_40_OG01_003700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/privatrecht
+3985,Unternehmensrecht (Spitzer),Unternehmensrecht (Spitzer),001_40_OG02_002700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,AE,
+3262,Austrian and European Labour Law and Social Law,Österreichisches und Europäisches Arbeitsrecht und Sozialrecht,001_40_OG01_003700,"Gebäude D3, Ebene 1",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/ars
+3803,Foreign Language Business Communication,Fremdsprachliche Wirtschaftskommunikation,001_30_OG02_032100,"Gebäude D2, Eingang D, Ebene 1-3",Welthandelsplatz 1,1020,Wien,DP,http://www.wu.ac.at/bizcomm
+3988,Central Office Business Languages,Sekretariat Fremdsprachliche WIKO,001_30_OG02_032100,"Gebäude D2, Eingang D, Ebene 2",Welthandelsplatz 1,1020,Wien,AI,http://www.wu.ac.at/bizcomm
+3251,English Business Communication,Englische Wirtschaftskommunikation,001_30_OG02_032100,"Gebäude D2, Eingang D, Ebene 2/3",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/ebc
+3275,Department of English Business Communication,Englische Wirtschaftskommunikation (Obenaus),001_30_OG02_032100,"Gebäude D2, 2. und 3. OG",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/ebc
+3316,Department of English Business Communication,Englische Wirtschaftskommunikation (Mautner),001_30_OG02_032100,"Gebäude D2, 2. und 3. OG",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/ebc
+3322,Department of English Business Communication,Englische Wirtschaftskommunikation (Köster),001_30_OG02_032100,"Gebäude D2, 2. und 3. OG",Welthandelsplatz 1,1020,Wien,AE,http://www.wu.ac.at/ebc
+3337,Romance Languages,Romanische Sprachen,001_30_OG02_032100,"Gebäude D2, Eingang D, Ebene 1",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/roman/
+3257,Slavic Languages,Slawische Sprachen,001_30_OG02_032100,"Gebäude D2, Eingang D, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/slawisch/
+3802,Socioeconomics,Sozioökonomie,001_50_OG03_020100,"Gebäude D4, Ebene 2 und 3",Welthandelsplatz 1,1020,Wien,DP,http://www.wu.ac.at/sozoek
+4002,Institute for Ecological Economics,Ecological Economics,001_50_OG03_020100,"Gebäude D5, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,
+4018,Gesellschaftswandel und Nachhaltigkeit,Gesellschaftswandel und Nachhaltigkeit,001_50_OG03_020100,"Gebäude D5, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,
+3241,Institute for Multi-Level Governance and Development,Multi-Level Governance and Development,001_50_OG03_020100,"Gebäude D4, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/mlgd
+3821,Managing Sustainability,Institut für Nachhaltigkeitsmanagement,001_50_OG03_020100,"Gebäude D1, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,https://www.wu.ac.at/sustainability/
+3442,Social Policy,Sozialpolitik,001_50_OG03_020100,"Gebäude D4, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/sozialpolitik/
+4024,Health Economics and Policy,Health Economics and Policy,001_50_OG03_020100,,Welthandelsplatz 1,1020,Wien,AB,https://www.wu.ac.at/gesundheitsoekonomie/
+3946,Demography,Demographie,D5_OG03_200002,"Gebäude D5, Ebene 3",Welthandelsplatz 1,1020,Wien,AB,
+4014,Wittgenstein Centre,Wittgenstein Centre,D5_OG02_000088,,,,,SO,
+3451,Sociology and Social Research,Soziologie und Empirische Sozialforschung,001_50_OG03_020100,"Gebäude D4, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/sozio/
+3832,Economic Geography and GIScience,Wirtschaftsgeographie und Geoinformatik,001_50_OG03_020100,"Gebäude D4, Ebene 2/Eingang Ebene",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/wgi/
+3438,Economic and Social History,Wirtschafts- und Sozialgeschichte,001_50_OG03_020100,"Gebäude D4, Ebene 3",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/geschichte/
+3756,Business History,Unternehmensgeschichte,001_50_OG03_020100,"Gebäude D4, Ebene 3",Welthandelsplatz 1,1020,Wien,AB,http://www.wu.ac.at/geschichte/
+3801,Economics,Volkswirtschaft,001_50_OG02_020100,"Gebäude D4, Ebene 1 und 2",Welthandelsplatz 1,1020,Wien,DP,http://www.wu.ac.at/economics
+3825,Macroeconomics,Makroökonomie,001_50_OG02_020100,"Gebäude D4, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/vw1
+3826,Institutional and Heterodox Economics,Institutionelle und Heterodoxe Ökonomie,001_50_OG02_020100,"Gebäude D4, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/vw3
+3827,Economic Policy and Industrial Economics,Volkswirtschaftspolitik und Industrieökonomik,001_50_OG02_020100,"Gebäude D4, Ebene 1",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/vw4
+3828,Institute for Analytical Economics,Analytische Volkswirtschaftslehre,001_50_OG02_020100,"Gebäude D4, Ebene 1",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/vw5
+3829,Quantitative Economics,Quantitative Volkswirtschaftslehre,001_50_OG02_020100,"Gebäude D4, Ebene 1",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/iqv
+3830,International Economics and Development,Außenwirtschaft und Entwicklung,001_50_OG02_020100,"Gebäude D4, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/vw7
+3831,Labour Economics,Arbeitsmarkttheorie und -politik,001_50_OG02_020100,"Gebäude D4, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/arbeitsmarkt
+3338,Public Sector Economics,Finanzwissenschaft und öffentliche Wirtschaft,001_50_OG02_020100,"Gebäude D4, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/finanz/
+3407,International Economics,Internationale Wirtschaft,001_50_OG02_020100,"Gebäude D4, Ebene 2",Welthandelsplatz 1,1020,Wien,IN,http://www.wu.ac.at/ie
+3806,Forschungsinstitute,Forschungsinstitute,001_40_OG02_500900,,,,,KN,
+3869,Research Institute for Economics of Aging,Altersökonomie,001_40_OG02_500900,"Gebäude D4, Ebene 1",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/altersoekonomie
+3624,European Affairs,Europainstitut,001_40_OG02_500900,"Gebäude D3, Ebene 4",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/europainstitut
+3833,Familienunternehmen,Familienunternehmen,001_20_OG03_370800,"Gebäude D1, Ebene 3",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/fofu
+3951,Freie Berufe,Freie Berufe,001_20_OG03_370800,"Gebäude D1, Ebene 3",Welthandelsplatz 1,1020,Wien,FI,
+3950,Research Institute for Human Capital and Development,Human Capital and Development,001_40_OG02_500900,"Gebäude D5, Ebene 3",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/humancapital
+3820,Internationale Besteuerung,Internationale Besteuerung,001_40_OG02_500900,"Gebäude D3, Ebene 4",Welthandelsplatz 1,1020,Wien,FI,
+3807,RiCC Research Institute for Co-Operation and Co-Operatives,Kooperationen und Genossenschaften,001_20_OG03_370800,"Gebäude D1, Ebene 3",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/ricc
+3366,Mittel- und Osteuropäisches Wirtschaftsrecht,Mittel- und Osteuropäisches Wirtschaftsrecht,001_40_OG02_500900,"Gebäude D3, Ebene 4",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/fowi
+3892,Research Institute for Spatial and Real Estate Economics,Raum- und Immobilienwirtschaft,001_40_OG02_500900,"Gebäude D4, Ebene 1",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/immobilienwirtschaft
+3870,Research Institute for Computational Methods,Rechenintensive Methoden,001_40_OG02_500900,"Gebäude D4, Ebene 1",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/firm
+3824,Regulierungsökonomie,Regulierungsökonomie,001_50_OG01_004600,"Gebäude D4, Ebene 1",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/regulation/
+3952,Strategische Kapitalmarktforschung,Strategische Kapitalmarktforschung,001_40_OG02_500900,Gebäude D4,Welthandelsplatz 1,1020,Wien,FI,
+3822,Supply Chain Management,Supply Chain Management,001_40_OG02_500900,"Gebäude D1, Ebene 3",Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/scm
+3949,Research Institute for Urban Management and Governance,Urban Management and Governance,001_40_OG02_500900,,Welthandelsplatz 1,1020,Wien,FI,http://www.wu.ac.at/urban/
+3954,Urban Management and Governance (Meyer),Urban Management and Governance (Meyer),001_30_OG01_035900,"Gebäude D2, Ebene 1",Welthandelsplatz 1,1020,Wien,AE,
+3955,Urban Management and Governance (Madner),Urban Management and Governance (Madner),001_40_OG04_004100,"Gebäude D3, Ebene 4",Welthandelsplatz 1,1020,Wien,AE,
+4012,Economics of Inequality,Verteilungsfragen,001_40_OG02_500900,Gebäude D4,Welthandelsplatz 1,1020,Wien,FI,
+3928,Kompetenzzentren,Kompetenzzentren,001_40_OG02_500900,,,,,KN,
+3894,Competence Center for Emerging Markets and CEE,Kompetenzzentrum für Emerging Markets and CEE,001_20_OG03_370800,"Gebäude D1, Ebene 3",Welthandelsplatz 1,1020,Wien,WE,http://www.wu.ac.at/emcee
+3945,Kompetenzzentrum für Empirische Forschungsmethoden,Kompetenzzentrum für Empirische Forschungsmethoden,001_50_OG01_004600,"Gebäude D4, Ebene 1",Welthandelsplatz 1,1020,Wien,WE,
+4027,Competence Center for Experimental Research,Experimentalforschung,001_40_OG02_500900,,,,,WE,
+3809,Nonprofit Organisations and und Social Entrepreneurship,Kompetenzzentrum für Nonprofit-Organisationen und Social Entrepreneurship,001_20_OG02_361100,"Gebäude D1, Ebene 2",Welthandelsplatz 1,1020,Wien,WE,http://www.wu.ac.at/npocompetence
+3993,Sustainability,Kompetenzzentrum für Nachhaltigkeit,001_20_OG03_375200,"Gebäude D1, Ebene 3",Welthandelsplatz 1,1020,Wien,WE,http://www.wu.ac.at/sustainabilitycenter
+4013,WU Gründungszentrum,WU Gründungszentrum,001_20_EG01_684500,,,,,WE,
+3268,WU Executive Academy,WU Executive Academy,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,WE,http://www.executiveacademy.at/de/
+3957,Controlling Executive Academy,Controlling Executive Academy,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,RF,
+3835,Executive Education Executive Academy,Executive Education Executive Academy,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,RF,
+3836,Marketing Executive Academy,Marketing Executive Academy,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,RF,
+3689,Back Office Executive Academy,Back Office Executive Academy,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,RF,
+3855,IT & e-academy Executive Academy,IT & e-academy Executive Academy,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,RF,
+3958,Public Relations Executive Academy,Public Relations Executive Academy,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,RF,
+3978,Master of Business Administration/Law,Master of Business Administration/Law,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,RF,https://executiveacademy.at/de/ueber-uns/
+3979,Universitätslehrgänge,Universitätslehrgänge,002_00_OG05_011600,Gebäude EA,Welthandelsplatz 1,1020,Wien,RF,https://executiveacademy.at/de/ueber-uns/
+3871,Fremdfirmen,Fremdfirmen,001_40_OG02_500900,,,,,FF,
+3986,ITS Externe,ITS Externe,001_40_OG02_500900,,,,,DL,
+4011,Campusmanagement Externe,Campusmanagement Externe,001_40_OG02_500900,,,,,DL,
+3971,BIG,BIG,001_40_OG02_500900,,,,,DL,
+3872,Arbeitsmedizinischer Dienst,Arbeitsmedizinischer Dienst,001_40_EG01_501200,,,,,DL,
+3972,Facultas Verlags- und Buchhandels AG,Facultas Verlags- und Buchhandels AG,001_30_EG01_510000,,,,,DL,www.facultas.at/ueber
+3877,Universitätsseelsorge,Universitätsseelsorge,001_40_OG02_500900,,,,,DL,https://www.wu.ac.at/universitaet/organisation/interessensvertretungen/organizations/oekum/
+3661,SONSTIGE,SONSTIGE,001_40_OG02_500900,,,,,SO,

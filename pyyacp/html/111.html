@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>
+              CSV Engine
+        </title>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="static/semantic/semantic.min.css">
+
+         
+        <link rel="stylesheet" type="text/css" href="static/css/csvengine.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="static/semantic/semantic.min.js"></script>
+
+          
+
+        <style>
+            .ui.card .meta {
+                font-size: 0.8em;
+            }
+            
+
+            
+        </style>
+        <script>
+            
+
+            
+        </script>
+    </head>
+
+    <body>
+
+    <!-- HEADER -->
+        <header id="header" class="ui vertical segment">
+            <h1 class="ui header fifteen wide column">
+                <div class="content">
+                    CSV Engine
+                    <div class="sub header">Tools and services for processing and enriching CSV files</div>
+                </div>
+                <img  class="ui small image" src="static/img/wu.png">
+            </h1>
+        </header>
+
+    <!-- MAIN NAVIGATION -->
+        <nav id="mainnav" class="ui  fluid secondary stackable pointing icon menu " >
+
+        </nav>
+
+
+    <!-- CONTENT -->
+
+        <section class="ui text">
+            
+<div class="ui  container">
+    <h2 class="ui divider horizontal header">CSV Profiler</h2>
+
+    <div class="ui text vertical segment ">
+        <div class="ui two column grid">
+            <div class="column">
+                <h3 class="ui divider horizontal header">Table Details</h3>
+                <a href="http://data.wu.ac.at/data/unibib/JD2.csv">http://data.wu.ac.at/data/unibib/JD2.csv</a>
+                <table class="ui very basic table">
+                    <tbody>
+                        <tr>
+                            <td>rows</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>columns</td>
+                            <td>13</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="column">
+                <h3 class="ui divider horizontal header">CSV Dialect</h3>
+                <table class="ui very basic table">
+                    <tbody>
+                        <tr>
+                            <td>encoding</td>
+                            <td>utf-8</td>
+                        </tr>
+                        
+                            <tr>
+                                <td>lineterminator</td>
+                                <td>
+</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>skipinitialspace</td>
+                                <td>False</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>quoting</td>
+                                <td>0</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>delimiter</td>
+                                <td>,</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>quotechar</td>
+                                <td>"</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>doublequote</td>
+                                <td>True</td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="ui text vertical segment ">
+        <table border="1" class="dataframe ui celled table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Titel</th>
+      <th>AutorIn</th>
+      <th>Jahr</th>
+      <th>Verlagsort</th>
+      <th>ISSN/ISBN</th>
+      <th>Sprache</th>
+      <th>Auflage</th>
+      <th>Verlag</th>
+      <th>RVK-Notation</th>
+      <th>Zweigstelle</th>
+      <th>Signatur</th>
+      <th>Aufstellung</th>
+      <th>AC Nummer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>"... äh folgendes Problem äh ..."</td>
+      <td>Nothdurft, Werner</td>
+      <td>1984</td>
+      <td>Tübingen</td>
+      <td>3-87808-657-1</td>
+      <td>ger</td>
+      <td></td>
+      <td>Narr</td>
+      <td>GC 5210</td>
+      <td>JD2</td>
+      <td>5272-INST</td>
+      <td></td>
+      <td>AC00207305</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>... jak Češi jednají</td>
+      <td>Čulík, Jan</td>
+      <td>2000</td>
+      <td>Chomutov</td>
+      <td>80-86201-17-1</td>
+      <td>cze</td>
+      <td>Vyd. 1</td>
+      <td>Milenium Publ.</td>
+      <td>AP 19480</td>
+      <td>JD2</td>
+      <td></td>
+      <td>AP 19480 C967</td>
+      <td>AC03291200</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Ясно! Jasno!</td>
+      <td>Brosch, Monika</td>
+      <td>2014</td>
+      <td></td>
+      <td>978-3-12-527591-1</td>
+      <td>ger</td>
+      <td>1. Aufl.</td>
+      <td>Klett Sprachen</td>
+      <td></td>
+      <td>JD2</td>
+      <td></td>
+      <td>KG 1305 B874 -A,A1-A2(.14)</td>
+      <td>AC11036796</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ясно! Jasno!</td>
+      <td>Brosch, Monika</td>
+      <td>2014</td>
+      <td></td>
+      <td>978-3-12-527591-1</td>
+      <td>ger</td>
+      <td>1. Aufl.</td>
+      <td>Klett Sprachen</td>
+      <td></td>
+      <td>JD2</td>
+      <td>378-NBM-D2</td>
+      <td></td>
+      <td>AC11036796</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Ясно! Jasno!</td>
+      <td>Brosch, Monika</td>
+      <td>2013</td>
+      <td></td>
+      <td>978-3-12-527601-7</td>
+      <td>ger</td>
+      <td>1. Aufl., 1. [Dr.]</td>
+      <td>Klett Sprachen</td>
+      <td></td>
+      <td>JD2</td>
+      <td>376-NBM-D2</td>
+      <td></td>
+      <td>AC11190604</td>
+    </tr>
+  </tbody>
+</table>
+
+        <table class="ui definition teal very compact table">
+            <thead>
+                <tr class="center aligned">
+                    <th></th>
+                    
+                        <th>Titel</th>
+                    
+                        <th>AutorIn</th>
+                    
+                        <th>Jahr</th>
+                    
+                        <th>Verlagsort</th>
+                    
+                        <th>ISSN/ISBN</th>
+                    
+                        <th>Sprache</th>
+                    
+                        <th>Auflage</th>
+                    
+                        <th>Verlag</th>
+                    
+                        <th>RVK-Notation</th>
+                    
+                        <th>Zweigstelle</th>
+                    
+                        <th>Signatur</th>
+                    
+                        <th>Aufstellung</th>
+                    
+                        <th>AC Nummer</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+
+
+                
+                    <tr class="right aligned">
+                        <td>data_type</td>
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">int</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>data_class</td>
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR_CAT</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">NUM_VAR_CAT</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_ID_CAT</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR_CAT</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_ID_SING</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_ID</span></span></td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>patterns</td>
+                        
+                            
+                                <td>[(u'0001[11]', 6), (u'[S$1C\xdf]28ac[S$1C\xdfc]', 29806), (u'7AC[1111/[- ]AAAC[[- ]AAC/1111 - 1111]]', 36)]</td>
+                            
+                        
+                            
+                                <td>[(u'[SCc1] [[SC]13ac[S$1C\xdfc]/[ ].[C/[SC].]]', 3173), (u'7AC[[SC]20ac[SC$c1\xdf]]', 23906)]</td>
+                            
+                        
+                            
+                                <td>[(u'0001', 29848)]</td>
+                            
+                        
+                            
+                                <td>[(u'1111', 1), (u'[SC\xdf]15ac[SC$c1\xdf]', 24493)]</td>
+                            
+                        
+                            
+                                <td>[(u'1201[[ ]901[[ ]801[[ ]601[[ ]00001[1]]]]/[701[601-[[0001]-]]]C[[1111/\xdfCC]-[CC\xdf]]]', 25883), (u'[[01-000011-000011-[ \xdf[. ]]]C[\xdf]/001-000011-000011-[ \xdf]]12ac[SCc1\xdf]', 59)]</td>
+                            
+                        
+                            
+                                <td>[(u'ccc', 29734)]</td>
+                            
+                        
+                            
+                                <td>[(u'S$1C\xdfc', 11155)]</td>
+                            
+                        
+                            
+                                <td>[(u'[Sc]7AC[SC$c1]', 921), (u'[SC$1\xdf]21ac[SC$c1\xdf]', 28314)]</td>
+                            
+                        
+                            
+                                <td>[(u'CC 00011[[C[ccccccccc ccc CCC_]]0001[[SC\xdf]01[0001[11-11]]]/C]', 21264)]</td>
+                            
+                        
+                            
+                                <td>[(u'CC1  ', 29848)]</td>
+                            
+                        
+                            
+                                <td>[(u'1111[cccc]', 3), (u'[501[[1]-]]AAAC[SCc1]', 11352)]</td>
+                            
+                        
+                            
+                                <td>[(u'1.1.1.1', 1), (u'[[1] ]AAAC[SCc1\xdf]', 23465)]</td>
+                            
+                        
+                            
+                                <td>[(u'CC11111111', 29848)]</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>top_value</td>
+                        
+                            
+                                <td>(u'The New Yorker', 152)</td>
+                            
+                        
+                            
+                                <td>(u'Layton, Walter', 151)</td>
+                            
+                        
+                            
+                                <td>(u'2001', 1163)</td>
+                            
+                        
+                            
+                                <td>(u'Moskva', 2741)</td>
+                            
+                        
+                            
+                                <td>(u'0028-792X', 152)</td>
+                            
+                        
+                            
+                                <td>(u'eng', 9060)</td>
+                            
+                        
+                            
+                                <td>(u'1. publ.', 1909)</td>
+                            
+                        
+                            
+                                <td>(u'Lang', 871)</td>
+                            
+                        
+                            
+                                <td>(u'HD 232', 290)</td>
+                            
+                        
+                            
+                                <td>(u'JD2', 29848)</td>
+                            
+                        
+                            
+                                <td>(u'D2-Z67', 152)</td>
+                            
+                        
+                            
+                                <td>(u'SP', 1366)</td>
+                            
+                        
+                            
+                                <td>(u'AC01281438', 152)</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>num_rows</td>
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                            
+                                <td>29848</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>distinct</td>
+                        
+                            
+                                <td>21086</td>
+                            
+                        
+                            
+                                <td>17819</td>
+                            
+                        
+                            
+                                <td>157</td>
+                            
+                        
+                            
+                                <td>1537</td>
+                            
+                        
+                            
+                                <td>21808</td>
+                            
+                        
+                            
+                                <td>29</td>
+                            
+                        
+                            
+                                <td>2348</td>
+                            
+                        
+                            
+                                <td>6142</td>
+                            
+                        
+                            
+                                <td>4142</td>
+                            
+                        
+                            
+                                <td>1</td>
+                            
+                        
+                            
+                                <td>8778</td>
+                            
+                        
+                            
+                                <td>18624</td>
+                            
+                        
+                            
+                                <td>25683</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>empty</td>
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>2769</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>5354</td>
+                            
+                        
+                            
+                                <td>3906</td>
+                            
+                        
+                            
+                                <td>114</td>
+                            
+                        
+                            
+                                <td>18693</td>
+                            
+                        
+                            
+                                <td>613</td>
+                            
+                        
+                            
+                                <td>8584</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>18493</td>
+                            
+                        
+                            
+                                <td>6382</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>value length</td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>30</td>
+                                            <td>100</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>21</td>
+                                            <td>100</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>10</td>
+                                            <td>76</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>14</td>
+                                            <td>66</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>13</td>
+                                            <td>118</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>14</td>
+                                            <td>152</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>7</td>
+                                            <td>47</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>10</td>
+                                            <td>29</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>11</td>
+                                            <td>30</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>10</td>
+                                            <td>10</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>stats_constancy</td>
+                        
+                            
+                                <td>0.0050924685071</td>
+                            
+                        
+                            
+                                <td>0.00505896542482</td>
+                            
+                        
+                            
+                                <td>0.0389640846958</td>
+                            
+                        
+                            
+                                <td>0.0918319485393</td>
+                            
+                        
+                            
+                                <td>0.0050924685071</td>
+                            
+                        
+                            
+                                <td>0.303537925489</td>
+                            
+                        
+                            
+                                <td>0.0639573840793</td>
+                            
+                        
+                            
+                                <td>0.029181184669</td>
+                            
+                        
+                            
+                                <td>0.00971589386224</td>
+                            
+                        
+                            
+                                <td>1.0</td>
+                            
+                        
+                            
+                                <td>0.0050924685071</td>
+                            
+                        
+                            
+                                <td>0.0457652103994</td>
+                            
+                        
+                            
+                                <td>0.0050924685071</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>stats_uniqueness</td>
+                        
+                            
+                                <td>0.706445993031</td>
+                            
+                        
+                            
+                                <td>0.596991423211</td>
+                            
+                        
+                            
+                                <td>0.00525998391852</td>
+                            
+                        
+                            
+                                <td>0.0514942374698</td>
+                            
+                        
+                            
+                                <td>0.73063521844</td>
+                            
+                        
+                            
+                                <td>0.000971589386224</td>
+                            
+                        
+                            
+                                <td>0.0786652372018</td>
+                            
+                        
+                            
+                                <td>0.205775931386</td>
+                            
+                        
+                            
+                                <td>0.138769766819</td>
+                            
+                        
+                            
+                                <td>3.35030822836e-05</td>
+                            
+                        
+                            
+                                <td>0.294090056285</td>
+                            
+                        
+                            
+                                <td>0.623961404449</td>
+                            
+                        
+                            
+                                <td>0.860459662289</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>stats_top_value</td>
+                        
+                            
+                                <td>(u'The New Yorker', 152)</td>
+                            
+                        
+                            
+                                <td>(u'Layton, Walter', 151)</td>
+                            
+                        
+                            
+                                <td>(u'2001', 1163)</td>
+                            
+                        
+                            
+                                <td>(u'Moskva', 2741)</td>
+                            
+                        
+                            
+                                <td>(u'0028-792X', 152)</td>
+                            
+                        
+                            
+                                <td>(u'eng', 9060)</td>
+                            
+                        
+                            
+                                <td>(u'1. publ.', 1909)</td>
+                            
+                        
+                            
+                                <td>(u'Lang', 871)</td>
+                            
+                        
+                            
+                                <td>(u'HD 232', 290)</td>
+                            
+                        
+                            
+                                <td>(u'JD2', 29848)</td>
+                            
+                        
+                            
+                                <td>(u'D2-Z67', 152)</td>
+                            
+                        
+                            
+                                <td>(u'SP', 1366)</td>
+                            
+                        
+                            
+                                <td>(u'AC01281438', 152)</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>c_dist_dist</td>
+                        
+                            
+                                <td>{u'\u030a': 2, u'\u042f': 13, u'\u0116': 227, u'\u2018': 2, u'\u201c': 2, u' ': 88798, u'(': 123, u'\xab': 2, u',': 1473, u'\u032e': 2, u'0': 568, u'4': 92, u'\xb7': 2, u'8': 144, u'\xbb': 2, u'<': 259, u'\xbf': 26, u'@': 39, u'\u0142': 36, u'D': 2542, u'\xc7': 3, u'H': 855, u'L': 4553, u'P': 2332, u'\u0152': 2, u'T': 3410, u'X': 410, u'\u015a': 1, u'\xdf': 162, u'\u015e': 1, u'\xe3': 4, u'\u1e64': 1, u'\xe7': 734, u'h': 19117, u'\xeb': 8, u'l': 34269, u'\xef': 21, u'p': 14269, u'\xf3': 791, u't': 46382, u'x': 2049, u'\xfb': 2, u'\u017a': 3, u'|': 4, u'\u017e': 441, u'\u0301': 1, u'A': 2507, u'\u0105': 4, u'\u010d': 1695, u'd': 23013, u'\u0111': 2, u'\u0119': 34, u"'": 2266, u'+': 9, u'/': 238, u'\xb0': 7, u'3': 101, u'7': 117, u';': 3, u'?': 310, u'\xc0': 10, u'C': 2348, u'\xc4': 12, u'G': 1792, u'\xc8': 2, u'K': 1203, u'\u014d': 1, u'\xcc': 1, u'O': 879, u'\u01ce': 2, u'S': 3817, u'W': 1557, u'\u0159': 50, u'[': 27, u'\xdc': 103, u'\u0161': 581, u'\xe0': 299, u'c': 32374, u'z': 5299, u'\u0165': 1, u'\xe4': 654, u'g': 18559, u'\u2032': 58, u'\xe8': 237, u'k': 12579, u'\xec': 4, u'o': 55079, u's': 52095, u'\xf4': 21, u'w': 2778, u'\u043d': 13, u'{': 1, u'\u017d': 47, u'\xfc': 984, u'\u0101': 1, u'\u0457': 1, u'\u0308': 24, u'\u010c': 111, u'\u201e': 2, u'\xa1': 13, u'"': 393, u'&': 103, u'\u0328': 4, u'*': 16, u'.': 880, u'2': 276, u'6': 81, u'\u02b9': 1145, u':': 181, u'>': 259, u'\xc1': 2, u'B': 1809, u'\u0144': 11, u'F': 1870, u'\xc9': 109, u'\u0148': 2, u'J': 459, u'\xcd': 1, u'\u1e63': 1, u'N': 1102, u'R': 2642, u'V': 1064, u'\u0158': 2, u'Z': 456, u'^': 26, u'\xe1': 696, u'\u0160': 15, u'b': 6475, u'\u1e67': 1, u'f': 9028, u'\xe9': 1930, u'j': 6236, u'\xed': 947, u'n': 63990, u'\xf1': 1091, u'r': 48641, u'\xf5': 2, u'v': 9390, u'\xf9': 11, u'\u043e': 13, u'\xfd': 119, u'\u017c': 4, u'\u0103': 16, u'\u0107': 3, u'\u0117': 357, u'\u2019': 10, u'\u011b': 109, u'\u011f': 3, u'!': 236, u')': 121, u'\u012b': 1, u'-': 2019, u'\xae': 7, u'1': 576, u'5': 145, u'9': 422, u'\u02ba': 14, u'=': 2, u'\u0441': 13, u'\xc2': 1, u'E': 3782, u'I': 2739, u'\xca': 1, u'M': 2083, u'\xce': 1, u'Q': 153, u'\u0153': 3, u'U': 737, u'\xd6': 123, u'Y': 209, u'\u015b': 6, u'\xda': 8, u']': 27, u'\u015f': 2, u'a': 68957, u'\u0163': 18, u'\xe2': 31, u'e': 80836, u'\xe6': 2, u'i': 73532, u'\xea': 12, u'm': 19894, u'\u016f': 19, u'\xee': 12, u'q': 1185, u'\u01f0': 1, u'\xf2': 25, u'u': 27291, u'\xf6': 1057, u'y': 7477, u'\xfa': 75}</td>
+                            
+                        
+                            
+                                <td>{u'\u010e': 2, u'\u0116': 72, u'\u011a': 1, u' ': 50897, u'\u0326': 8, u'(': 5, u',': 27370, u'0': 28, u'\xb3': 1, u'4': 29, u'8': 13, u'<': 35, u'\u02bf': 2, u'\u0142': 44, u'\u01c5': 4, u'D': 3019, u'H': 8460, u'L': 3666, u'P': 3508, u'\xd3': 7, u'T': 1849, u'X': 25, u'\u015a': 1, u'\xdf': 107, u'\u015e': 1, u'\xe3': 5, u'd': 11307, u'\xe7': 154, u'h': 9142, u'\xeb': 50, u'l': 22014, u'\xef': 18, u'p': 2994, u'\xf3': 445, u't': 18299, u'x': 390, u'\u017e': 122, u'\u0101': 2, u'\u0105': 4, u'\u0109': 1, u'\u010d': 997, u'\u0119': 5, u'\x98': 1, u'\xa0': 1, u"'": 322, u'\u012d': 2, u'/': 3, u'\xb0': 2, u'3': 39, u'7': 10, u';': 1, u'\u013d': 1, u'\xbc': 1, u'?': 2, u'\u0141': 3, u'\xc0': 1, u'C': 4048, u'\xc4': 1, u'G': 4453, u'\u01c6': 4, u'\xc8': 1, u'K': 2514, u'\u014d': 4, u'O': 1036, u'S': 5024, u'\u014f': 2, u'W': 1978, u'\u01d6': 1, u'\u0159': 57, u'\xd8': 2, u'[': 6602, u'\xdc': 9, u'\u0161': 405, u'\xe0': 110, u'c': 9714, u'\u0165': 6, u'\xe4': 222, u'g': 12735, u'\xe8': 137, u'k': 6647, u'\u016d': 1, u'\xec': 4, u'o': 27776, u's': 23177, u'\xf4': 8, u'w': 1400, u'\xf8': 19, u'\u017d': 50, u'\xfc': 652, u'\u0308': 20, u'\u010c': 99, u'\u031c': 3, u'\u0120': 2, u'"': 2, u'&': 5, u'\u0328': 2, u'*': 3, u'.': 13359, u'2': 90, u'6': 27, u'\u02b9': 623, u':': 4, u'>': 32, u'\xc1': 146, u'B': 4524, u'\xc5': 3, u'\u0144': 23, u'F': 2499, u'\xc9': 84, u'\u0148': 6, u'J': 4217, u'\u014c': 1, u'N': 1878, u'R': 4308, u'V': 2492, u'\u2032': 18, u'Z': 419, u'\xe1': 850, u'\u0160': 199, u'b': 4342, u'\xe5': 6, u'\u1e67': 1, u'f': 3110, u'\xe9': 1177, u'\u01eb': 1, u'j': 3224, u'\xed': 932, u'n': 31833, u'\xf1': 177, u'r': 39139, u'v': 7241, u'\xf9': 7, u'z': 3956, u'\xfd': 40, u'\u017c': 7, u'\u0103': 12, u'\u0107': 45, u'\u010b': 2, u'\u010f': 1, u'\u0113': 2, u'\u0117': 7, u'\u2019': 2, u'\u011b': 32, u'\u011f': 1, u'\u1e25': 1, u'\u0327': 2, u')': 6, u'\u012b': 1, u'-': 1470, u'1': 88, u'5': 22, u'9': 34, u'A': 5423, u'E': 2510, u'I': 2141, u'M': 6370, u'\u034f': 11, u'Q': 69, u'\u0153': 1, u'U': 577, u'\xd6': 45, u'Y': 155, u'\u015b': 4, u'\xda': 4, u']': 6601, u'\u015f': 3, u'a': 43944, u'\u0163': 4, u'\xe2': 3, u'e': 42412, u'\xe6': 1, u'i': 31991, u'\xea': 5, u'm': 7639, u'\u016f': 11, u'\xee': 11, u'q': 607, u'\xf2': 20, u'u': 11834, u'\xf6': 524, u'y': 3646, u'\u017b': 1, u'\xfa': 135}</td>
+                            
+                        
+                            
+                                <td>{u'1': 22922, u'0': 26714, u'3': 3448, u'2': 16884, u'5': 3359, u'4': 3112, u'7': 4724, u'6': 3953, u'9': 27061, u'8': 6717}</td>
+                            
+                        
+                            
+                                <td>{u'\u0308': 1, u'\u010c': 12, u'Y': 2067, u'\u0116': 2, u' ': 16008, u'(': 80, u'*': 8, u',': 2608, u'.': 14304, u'0': 1, u'2': 1, u'\u02b9': 31, u'\xe2': 1, u'a': 25015, u'\u0142': 12, u'\xc5': 1, u'D': 390, u'F': 1379, u'H': 714, u'J': 176, u'L': 2720, u'N': 2466, u'P': 2919, u'R': 734, u'T': 1357, u'V': 210, u'\u2032': 3, u'Z': 60, u'\xdf': 5, u'\xe1': 74, u'\u0160': 2, u'\xe3': 1, u'b': 2825, u'd': 8202, u'\xe7': 2, u'f': 2188, u'\xe9': 125, u'h': 2295, u'j': 136, u'\xed': 22, u'l': 5537, u'\xef': 17, u'n': 19549, u'\xf1': 28, u'p': 510, u'\xf3': 40, u'r': 14364, u't': 6031, u'v': 3449, u'x': 880, u'\u017a': 1, u'\xfd': 1, u'\u017e': 20, u'A': 936, u'\u010d': 14, u'B': 3214, u'\u016f': 2, u'\u0117': 1, u'\u011b': 1, u'\u0144': 8, u"'": 20, u')': 80, u'-': 533, u'/': 32, u'1': 2, u'\u0148': 2, u'9': 2, u';': 1480, u'\u0141': 1, u'C': 1507, u'E': 206, u'G': 314, u'I': 284, u'M': 7131, u'K': 223, u'\xf6': 156, u'\u014d': 4, u'O': 869, u'Q': 23, u'S': 1160, u'U': 79, u'W': 2140, u'\xd6': 1, u'\u0159': 1, u'\u1e63': 1, u'[': 6751, u'\xda': 3, u']': 6749, u'\u015f': 20, u'\u0161': 9, u'c': 2253, u'z': 512, u'e': 13778, u'\xe4': 6, u'g': 4251, u'\xe6': 1, u'i': 12510, u'\xe8': 38, u'k': 5980, u'm': 3848, u'o': 15642, u'q': 13, u's': 9339, u'\xf2': 1, u'u': 9603, u'\xf4': 1, u'w': 1545, u'\u0328': 1, u'y': 196, u'\xf8': 5, u'\xfa': 1, u'\u017d': 1, u'\xfc': 1816}</td>
+                            
+                        
+                            
+                                <td>{u' ': 112, u')': 29, u'(': 28, u'-': 79201, u',': 9, u'.': 44, u'1': 27274, u'0': 36633, u'3': 28931, u'2': 24936, u'5': 23475, u'4': 24023, u'7': 26573, u'6': 18821, u'9': 26118, u'8': 35136, u';': 4, u':': 15, u'A': 1, u'C': 1, u'B': 1, u'E': 20, u'D': 8, u'G': 3, u'F': 1, u'I': 1, u'K': 1, u'M': 9, u'L': 2, u'O': 1, u'Q': 1, u'S': 1, u'R': 2, u'U': 1, u'T': 1, u'V': 1, u'Y': 1, u'X': 1881, u'd': 20, u'a': 23, u'c': 3, u'b': 6, u'e': 20, u'\xe4': 1, u'g': 4, u'f': 2, u'i': 7, u'h': 5, u'k': 16, u'm': 4, u'l': 5, u'o': 6, u'n': 8, u'p': 2, u's': 2, u'r': 34, u'u': 10, u't': 20, u'w': 2, u'y': 3, u'x': 13, u'\xfc': 2}</td>
+                            
+                        
+                            
+                                <td>{u'a': 5835, u'c': 459, u'b': 8, u'e': 18840, u'g': 15432, u'f': 3080, u'i': 2422, u'h': 5, u'k': 28, u'j': 4, u'm': 767, u'l': 847, u'o': 115, u'n': 9066, u'p': 3383, u's': 7441, u'r': 13662, u'u': 4921, u't': 2551, u'w': 1, u'v': 1, u'x': 6, u'z': 328}</td>
+                            
+                        
+                            
+                                <td>{u'\u030a': 1, u'\u010c': 2, u'Y': 2, u' ': 19660, u'"': 27, u'&': 4, u'\xa9': 6, u'(': 81, u'*': 1, u',': 2822, u'.': 25736, u'0': 304, u'2': 2353, u'4': 592, u'6': 269, u'\u02b9': 1, u'8': 328, u':': 26, u'\xc1': 1, u'a': 3452, u'\u0142': 1, u'D': 390, u'F': 73, u'\xc9': 15, u'H': 30, u'J': 28, u'L': 49, u'N': 564, u'P': 137, u'R': 545, u'T': 58, u'V': 159, u'Z': 3, u'\xdf': 5, u'\xe1': 13, u'b': 3860, u'd': 7153, u'\xe7': 2, u'f': 2277, u'\xe9': 655, u'h': 534, u'j': 76, u'\xed': 21, u'l': 5955, u'n': 3099, u'\xf1': 5, u'p': 5480, u'\xf3': 16, u'r': 6753, u't': 3028, u'v': 1323, u'x': 47, u'\xfb': 1, u'z': 910, u'\u017e': 1, u'\u0103': 4, u'\u010d': 81, u'B': 77, u'\u011b': 2, u"'": 37, u')': 81, u'\xaa': 4, u'-': 252, u'/': 100, u'1': 6569, u'3': 1074, u'5': 413, u'7': 253, u'9': 448, u';': 8, u'=': 9, u'A': 2344, u'\xc0': 1, u'C': 54, u'E': 167, u'G': 65, u'I': 252, u'K': 20, u'M': 64, u'O': 117, u'\u01ce': 2, u'Q': 1, u'S': 95, u'U': 91, u'W': 46, u'\xd6': 5, u'\u0159': 9, u'[': 703, u']': 705, u'\xdc': 9, u'\u015f': 3, u'\u0161': 11, u'\xe0': 47, u'c': 892, u'e': 10039, u'\xe4': 82, u'g': 1128, u'i': 4343, u'\xe8': 31, u'k': 420, u'\xea': 1, u'm': 947, u'o': 1904, u'q': 8, u's': 1966, u'u': 6576, u'w': 496, u'\xf6': 100, u'y': 422, u'\xfa': 1, u'\xfc': 226}</td>
+                            
+                        
+                            
+                                <td>{u'\u0410': 1, u'\u0116': 298, u'\u201c': 1, u'\ufe20': 1, u'(': 22, u',': 783, u'0': 141, u'4': 42, u'\xb7': 1, u'8': 6, u'\u0142': 27, u'D': 1573, u'H': 1790, u'L': 4620, u'P': 5427, u'T': 1422, u'X': 38, u'\u015a': 5, u'\xdf': 1, u'\u015e': 3, u'\xe3': 3, u'\u02ba': 1, u'd': 12789, u'\xe7': 57, u'h': 3970, u'\xeb': 3, u'l': 16072, u'\xef': 1, u'p': 2716, u'\xf3': 325, u't': 15999, u'x': 756, u'\u017e': 96, u'\u0105': 5, u'\u010d': 368, u'\u0119': 1, u"'": 542, u'\xa8': 2, u'+': 28, u'/': 72, u'\u0131': 3, u'\xb0': 2, u'3': 6, u'\xb4': 2, u';': 11, u'?': 1, u'\u0141': 1, u'\xc0': 3, u'C': 3701, u'G': 2681, u' ': 27615, u'\xc8': 7, u'K': 1588, u'O': 1502, u'S': 4532, u'W': 1140, u'\u0159': 9, u'\xd8': 1, u'[': 1068, u'\u01da': 1, u'_': 2, u'\u0161': 280, u'\xe0': 41, u'c': 8747, u'\xe4': 95, u'g': 6749, u'\xe8': 56, u'k': 5329, u'o': 18652, u's': 17917, u'w': 1572, u'\xf8': 3, u'\u017d': 16, u'\xfc': 398, u'\u0308': 4, u'\u010c': 20, u'\u201e': 1, u'"': 812, u'&': 494, u'\u0328': 4, u'*': 8, u'.': 12490, u'2': 106, u'6': 17, u'\u02b9': 297, u':': 11, u'\xc1': 8, u'B': 2874, u'\xc5': 1, u'\u0144': 25, u'\u2033': 3, u'\xc9': 290, u'J': 488, u'N': 2571, u'R': 2289, u'V': 2047, u'\u2032': 8, u'Z': 235, u'\xe1': 237, u'\u0160': 92, u'b': 3913, u'\xe5': 1, u'f': 2450, u'\xe9': 349, u'j': 2262, u'\xed': 291, u'n': 23871, u'\xf1': 203, u'r': 24728, u'\xf5': 1, u'v': 5267, u'z': 2518, u'\xfd': 7, u'\u017c': 1, u'\u0103': 14, u'\u0307': 2, u'\u010b': 6, u'\u010f': 1, u'\u0117': 35, u'\u2019': 1, u'\u011b': 52, u'\u011f': 1, u'\ufe21': 1, u')': 22, u'F': 1812, u'-': 2326, u'1': 13, u'5': 2, u'9': 16, u'\u1eba': 1, u'=': 1, u'\u02be': 1, u'A': 2695, u'!': 2, u'E': 4936, u'I': 3411, u'M': 2682, u'Q': 89, u'U': 3210, u'\xd6': 80, u'Y': 201, u'\u015b': 5, u'\xda': 9, u']': 1068, u'\u015f': 6, u'a': 28746, u'\u0163': 4, u'\xe2': 11, u'e': 33578, u'i': 22848, u'\xea': 3, u'm': 6555, u'\u016f': 3, u'q': 193, u'\xf2': 2, u'u': 12238, u'\xf6': 157, u'y': 3206, u'\xfa': 17}</td>
+                            
+                        
+                            
+                                <td>{u' ': 21290, u')': 4, u'(': 4, u'-': 5, u'.': 18, u'1': 11047, u'0': 24889, u'3': 5919, u'2': 7255, u'5': 9743, u'4': 4660, u'7': 4359, u'6': 4936, u'9': 2993, u'8': 3905, u'A': 1970, u'C': 1777, u'B': 1037, u'E': 4487, u'D': 2563, u'G': 2328, u'F': 621, u'I': 4772, u'H': 2184, u'K': 3454, u'J': 1, u'M': 3552, u'L': 495, u'O': 56, u'N': 711, u'Q': 3215, u'P': 2281, u'S': 3027, u'R': 2155, u'U': 253, u'T': 879, u'W': 181, u'V': 308, u'Y': 26, u'X': 62, u'Z': 156, u'_': 1, u'a': 3, u'c': 1, u'i': 1, u'h': 1, u'm': 1, u'o': 1, u's': 2, u'u': 2, u't': 2}</td>
+                            
+                        
+                            
+                                <td>{u' ': 59696, u'J': 29848, u'2': 29848, u'D': 29848}</td>
+                            
+                        
+                            
+                                <td>{u' ': 113, u',': 450, u'.': 1088, u'0': 4240, u'2': 8545, u'4': 5032, u'6': 4219, u'8': 3765, u'B': 743, u'D': 2605, u'F': 3, u'H': 4, u'J': 1, u'L': 17, u'N': 9471, u'P': 3, u'R': 31, u'T': 8769, u'V': 92, u'X': 1, u'Z': 1876, u'b': 84, u'd': 61, u'f': 4, u'h': 28, u'j': 2, u'l': 19, u'n': 10, u'p': 15, u'r': 52, u't': 8, u'v': 2, u'x': 377, u'z': 2, u'+': 24, u'-': 12000, u'/': 2430, u'1': 6617, u'3': 5498, u'5': 4263, u'7': 4271, u'9': 4207, u';': 1, u'A': 29, u'C': 240, u'E': 383, u'G': 3, u'I': 8790, u'K': 2, u'M': 728, u'O': 21, u'S': 8776, u'\xdc': 23, u'a': 149, u'c': 28, u'e': 103, u'\xe4': 1, u'g': 9, u'i': 61, u'k': 5, u'm': 11, u'o': 56, u'q': 1, u's': 270, u'u': 10, u'\xf6': 1, u'\xfc': 3}</td>
+                            
+                        
+                            
+                                <td>{u' ': 45585, u')': 3522, u'(': 3522, u'+': 336, u'-': 4293, u',': 839, u'/': 113, u'.': 1621, u'1': 18252, u'0': 21144, u'3': 12687, u'2': 15668, u'5': 15451, u'4': 10591, u'7': 10820, u'6': 12008, u'9': 9929, u'8': 10943, u'A': 3226, u'C': 2422, u'B': 3011, u'E': 4244, u'D': 3495, u'G': 3504, u'F': 2534, u'I': 6561, u'H': 2961, u'K': 4591, u'J': 387, u'M': 5056, u'L': 1428, u'O': 332, u'N': 1099, u'Q': 2592, u'P': 4095, u'S': 6205, u'R': 5059, u'U': 304, u'T': 2463, u'W': 660, u'V': 788, u'Y': 61, u'X': 75, u'Z': 385, u'a': 4, u'c': 1, u'b': 1, u'e': 14, u'd': 19, u'g': 3, u'f': 1, u'i': 11, u'h': 3, u'm': 1, u'l': 13, u'o': 1, u'n': 19, u'p': 7, u'r': 3, u'u': 3, u't': 3, u'\xf6': 1, u'x': 1}</td>
+                            
+                        
+                            
+                                <td>{u'A': 29848, u'C': 29848, u'1': 25442, u'0': 53242, u'3': 22231, u'2': 21183, u'5': 19797, u'4': 20402, u'7': 19506, u'6': 19386, u'9': 17835, u'8': 19760}</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>benford_is</td>
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>benford_chi</td>
+                        
+                            
+                                <td>341.741569194</td>
+                            
+                        
+                            
+                                <td>21.9807147946</td>
+                            
+                        
+                            
+                                <td>34502.3704806</td>
+                            
+                        
+                            
+                                <td>28.0320849648</td>
+                            
+                        
+                            
+                                <td>48567.1288649</td>
+                            
+                        
+                            
+                                <td>nan</td>
+                            
+                        
+                            
+                                <td>5232.33809839</td>
+                            
+                        
+                            
+                                <td>219.047977039</td>
+                            
+                        
+                            
+                                <td>940.375546349</td>
+                            
+                        
+                            
+                                <td>139655.018833</td>
+                            
+                        
+                            
+                                <td>2518.97544374</td>
+                            
+                        
+                            
+                                <td>923.397033599</td>
+                            
+                        
+                            
+                                <td>2714.08319255</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>benford_dist</td>
+                        
+                            
+                                <td>{1: 369, 2: 174, 3: 31, 4: 15, 5: 28, 6: 11, 7: 7, 8: 6, 9: 13}</td>
+                            
+                        
+                            
+                                <td>{1: 67, 2: 56, 3: 24, 4: 16, 5: 8, 6: 13, 7: 6, 8: 7, 9: 6}</td>
+                            
+                        
+                            
+                                <td>{1: 16176, 2: 13506, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}</td>
+                            
+                        
+                            
+                                <td>{1: 0, 2: 1, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 2}</td>
+                            
+                        
+                            
+                                <td>{1: 2162, 2: 2333, 3: 5500, 4: 1073, 5: 2256, 6: 309, 7: 586, 8: 4318, 9: 7396}</td>
+                            
+                        
+                            
+                                <td>{1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}</td>
+                            
+                        
+                            
+                                <td>{1: 6000, 2: 2016, 3: 862, 4: 458, 5: 254, 6: 146, 7: 104, 8: 92, 9: 70}</td>
+                            
+                        
+                            
+                                <td>{1: 8, 2: 85, 3: 5, 4: 6, 5: 2, 6: 15, 7: 0, 8: 4, 9: 9}</td>
+                            
+                        
+                            
+                                <td>{1: 7749, 2: 2620, 3: 2458, 4: 1637, 5: 1334, 6: 1643, 7: 1567, 8: 1011, 9: 1062}</td>
+                            
+                        
+                            
+                                <td>{1: 0, 2: 29848, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}</td>
+                            
+                        
+                            
+                                <td>{1: 1761, 2: 3374, 3: 1974, 4: 1506, 5: 1035, 6: 309, 7: 397, 8: 539, 9: 456}</td>
+                            
+                        
+                            
+                                <td>{1: 6839, 2: 2452, 3: 2224, 4: 1231, 5: 1131, 6: 1638, 7: 1308, 8: 993, 9: 798}</td>
+                            
+                        
+                            
+                                <td>{1: 7022, 2: 4458, 3: 5068, 4: 2865, 5: 2074, 6: 2256, 7: 1986, 8: 3047, 9: 1072}</td>
+                            
+                        
+                    </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        </section>
+
+    <!-- FOOTER
+        <footer class="ui background vertical footer segment">
+            <div class="ui  container">
+                <div class="ui stackable inverted divided equal height stackable grid">
+                    <div class="three wide column">
+                        <h4 class="ui grey header">About</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Sitemap</a>
+                            <a href="#" class="item">Contact Us</a>
+                            <a href="#" class="item">Religious Ceremonies</a>
+                            <a href="#" class="item">Gazebo Plans</a>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">Services</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Banana Pre-Order</a>
+                            <a href="#" class="item">DNA FAQ</a>
+                            <a href="#" class="item">How To Access</a>
+                            <a href="#" class="item">Favorite X-Men</a>
+                        </div>
+                    </div>
+                    <div class="seven wide column">
+                        <h4 class="ui inverted header">Footer Header</h4>
+                        <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+ -->
+    <!-- SCRIPTS -->
+        <script>
+             
+        </script>
+    </body>
+</html>

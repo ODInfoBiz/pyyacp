@@ -7,7 +7,7 @@ Created on Feb 1, 2016
 import os
 import logging
 
-from pyyacp.yacp import YACParser
+from pyyacp import YACParser
 from pyyacp.profiler import profile
 
 SAMPLES_PATH = "sample_csvs/"

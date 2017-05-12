@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>
+              CSV Engine
+        </title>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="static/semantic/semantic.min.css">
+
+         
+        <link rel="stylesheet" type="text/css" href="static/css/csvengine.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="static/semantic/semantic.min.js"></script>
+
+          
+
+        <style>
+            .ui.card .meta {
+                font-size: 0.8em;
+            }
+            
+
+            
+        </style>
+        <script>
+            
+
+            
+        </script>
+    </head>
+
+    <body>
+
+    <!-- HEADER -->
+        <header id="header" class="ui vertical segment">
+            <h1 class="ui header fifteen wide column">
+                <div class="content">
+                    CSV Engine
+                    <div class="sub header">Tools and services for processing and enriching CSV files</div>
+                </div>
+                <img  class="ui small image" src="static/img/wu.png">
+            </h1>
+        </header>
+
+    <!-- MAIN NAVIGATION -->
+        <nav id="mainnav" class="ui  fluid secondary stackable pointing icon menu " >
+
+        </nav>
+
+
+    <!-- CONTENT -->
+
+        <section class="ui text">
+            
+<div class="ui  container">
+    <h2 class="ui divider horizontal header">CSV Profiler</h2>
+
+    <div class="ui text vertical segment ">
+        <div class="ui two column grid">
+            <div class="column">
+                <h3 class="ui divider horizontal header">Table Details</h3>
+                <a href="http://data.wu.ac.at/portal/dataset/64b5f5fa-48f9-4553-a5ef-86d1821e684f/resource/6957620a-23de-4d29-af08-9c782efc142f/download/allcoursesandevents06s.csv">http://data.wu.ac.at/portal/dataset/64b5f5fa-48f9-4553-a5ef-86d1821e684f/resource/6957620a-23de-4d29-af08-9c782efc142f/download/allcoursesandevents06s.csv</a>
+                <table class="ui very basic table">
+                    <tbody>
+                        <tr>
+                            <td>rows</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>columns</td>
+                            <td>7</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="column">
+                <h3 class="ui divider horizontal header">CSV Dialect</h3>
+                <table class="ui very basic table">
+                    <tbody>
+                        <tr>
+                            <td>encoding</td>
+                            <td>utf-8</td>
+                        </tr>
+                        
+                            <tr>
+                                <td>lineterminator</td>
+                                <td>
+</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>skipinitialspace</td>
+                                <td>False</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>quoting</td>
+                                <td>0</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>delimiter</td>
+                                <td>,</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>quotechar</td>
+                                <td>"</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>doublequote</td>
+                                <td>False</td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="ui text vertical segment ">
+        <table border="1" class="dataframe ui celled table">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>course_id</th>
+      <th>semester</th>
+      <th>name</th>
+      <th>roomcode</th>
+      <th>buildingname</th>
+      <th>start</th>
+      <th>end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0001</td>
+      <td>06S</td>
+      <td>Marketing I</td>
+      <td>H 0001 (UZA 3)</td>
+      <td>UZA 3</td>
+      <td>2006-03-13T08:30:00</td>
+      <td>2006-03-13T10:00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0001</td>
+      <td>06S</td>
+      <td>Marketing I</td>
+      <td>H 0001 (UZA 3)</td>
+      <td>UZA 3</td>
+      <td>2006-03-15T08:30:00</td>
+      <td>2006-03-15T10:00:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0001</td>
+      <td>06S</td>
+      <td>Marketing I</td>
+      <td>H 0001 (UZA 3)</td>
+      <td>UZA 3</td>
+      <td>2006-03-20T08:30:00</td>
+      <td>2006-03-20T10:00:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0001</td>
+      <td>06S</td>
+      <td>Marketing I</td>
+      <td>H 0001 (UZA 3)</td>
+      <td>UZA 3</td>
+      <td>2006-03-22T08:30:00</td>
+      <td>2006-03-22T10:00:00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0001</td>
+      <td>06S</td>
+      <td>Marketing I</td>
+      <td>H 0001 (UZA 3)</td>
+      <td>UZA 3</td>
+      <td>2006-03-27T08:30:00</td>
+      <td>2006-03-27T10:00:00</td>
+    </tr>
+  </tbody>
+</table>
+
+        <table class="ui definition teal very compact table">
+            <thead>
+                <tr class="center aligned">
+                    <th></th>
+                    
+                        <th>course_id</th>
+                    
+                        <th>semester</th>
+                    
+                        <th>name</th>
+                    
+                        <th>roomcode</th>
+                    
+                        <th>buildingname</th>
+                    
+                        <th>start</th>
+                    
+                        <th>end</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+
+
+                
+                    <tr class="right aligned">
+                        <td>data_type</td>
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">unicode</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">datetime</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">datetime</span></span></td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>data_class</td>
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_ID</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_ID_SING</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR_CAT</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR_CAT</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">UNI_VAR_CAT</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">DATETIME</span></span></td>
+                            
+                        
+                            
+                                <td class="center aligned"><span class="ui basic label"><span class="ui sub header">DATETIME</span></span></td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>patterns</td>
+                        
+                            
+                                <td>[(u'1111', 15457)]</td>
+                            
+                        
+                            
+                                <td>[(u'11C', 15457)]</td>
+                            
+                        
+                            
+                                <td>[(u'[7AC[[[S1$] /-]AAC[[$ ]AAC]]]32ac[SC$c1\xdf]', 15214), (u'7ACC[1/[- ]AACC[CCCCCCCCCCCCCC-AACCCCCCC]]', 243)]</td>
+                            
+                        
+                            
+                                <td>[(u'[1]AAAC[[C]12acc[1/[ /[[1] ]\xdf]AAC[Sc$C1\xdf]]/[[ /.]0001[[11.]01 ]/[[.]0001[01]/ ]AAAC[01 /[11]C[cccccccccccccc]]]\xdfAAAC[ Cccccccccccccccc/[SCc1]\xdf[CC 1/[6acc[C5acc]]\xdf[[9accc/C[ccc./C]]aaacccc\xdf]]]]', 15457)]</td>
+                            
+                        
+                            
+                                <td>[(u'AAC[1/6accc[Ccccc-Ccccc/11]]', 15457)]</td>
+                            
+                        
+                            
+                                <td>[(u'1111-11-11C11:11:11', 15457)]</td>
+                            
+                        
+                            
+                                <td>[(u'1111-11-11C11:11:11', 15457)]</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>top_value</td>
+                        
+                            
+                                <td>(u'2267', 524)</td>
+                            
+                        
+                            
+                                <td>(u'06S', 15457)</td>
+                            
+                        
+                            
+                                <td>(u'Umbauarbeiten Facility-Management', 524)</td>
+                            
+                        
+                            
+                                <td>(u'H 2.18 (A)', 354)</td>
+                            
+                        
+                            
+                                <td>(u'UZA 1', 8597)</td>
+                            
+                        
+                            
+                                <td>(u'2006-03-16T11:00:00', 33)</td>
+                            
+                        
+                            
+                                <td>(u'2006-03-14T13:30:00', 32)</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>num_rows</td>
+                        
+                            
+                                <td>15457</td>
+                            
+                        
+                            
+                                <td>15457</td>
+                            
+                        
+                            
+                                <td>15457</td>
+                            
+                        
+                            
+                                <td>15457</td>
+                            
+                        
+                            
+                                <td>15457</td>
+                            
+                        
+                            
+                                <td>15457</td>
+                            
+                        
+                            
+                                <td>15457</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>distinct</td>
+                        
+                            
+                                <td>1699</td>
+                            
+                        
+                            
+                                <td>1</td>
+                            
+                        
+                            
+                                <td>1003</td>
+                            
+                        
+                            
+                                <td>120</td>
+                            
+                        
+                            
+                                <td>7</td>
+                            
+                        
+                            
+                                <td>2595</td>
+                            
+                        
+                            
+                                <td>2798</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>empty</td>
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                            
+                                <td>0</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>value length</td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>38</td>
+                                            <td>129</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>14</td>
+                                            <td>39</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>5</td>
+                                            <td>17</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>19</td>
+                                            <td>19</td>
+                                            <td>19</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                            <td>
+                                <table class="ui small very compact table">
+                                    <tbody>
+                                        <tr>
+                                            <th>min</th>
+                                            <th>mean</th>
+                                            <th>max</th>
+                                        </tr>
+                                        <tr>
+                                            <td>19</td>
+                                            <td>19</td>
+                                            <td>19</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>stats_constancy</td>
+                        
+                            
+                                <td>0.0339004981562</td>
+                            
+                        
+                            
+                                <td>1.0</td>
+                            
+                        
+                            
+                                <td>0.0339004981562</td>
+                            
+                        
+                            
+                                <td>0.0229022449376</td>
+                            
+                        
+                            
+                                <td>0.556188134826</td>
+                            
+                        
+                            
+                                <td>0.00213495503655</td>
+                            
+                        
+                            
+                                <td>0.00207025942938</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>stats_uniqueness</td>
+                        
+                            
+                                <td>0.109917836579</td>
+                            
+                        
+                            
+                                <td>6.46956071683e-05</td>
+                            
+                        
+                            
+                                <td>0.0648896939898</td>
+                            
+                        
+                            
+                                <td>0.00776347286019</td>
+                            
+                        
+                            
+                                <td>0.000452869250178</td>
+                            
+                        
+                            
+                                <td>0.167885100602</td>
+                            
+                        
+                            
+                                <td>0.181018308857</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>stats_top_value</td>
+                        
+                            
+                                <td>(u'2267', 524)</td>
+                            
+                        
+                            
+                                <td>(u'06S', 15457)</td>
+                            
+                        
+                            
+                                <td>(u'Umbauarbeiten Facility-Management', 524)</td>
+                            
+                        
+                            
+                                <td>(u'H 2.18 (A)', 354)</td>
+                            
+                        
+                            
+                                <td>(u'UZA 1', 8597)</td>
+                            
+                        
+                            
+                                <td>(u'2006-03-16T11:00:00', 33)</td>
+                            
+                        
+                            
+                                <td>(u'2006-03-14T13:30:00', 32)</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>c_dist_dist</td>
+                        
+                            
+                                <td>{u'1': 10555, u'0': 12742, u'3': 3730, u'2': 7795, u'5': 3618, u'4': 4245, u'7': 4534, u'6': 5197, u'9': 4725, u'8': 4687}</td>
+                            
+                        
+                            
+                                <td>{u'0': 15457, u'S': 15457, u'6': 15457}</td>
+                            
+                        
+                            
+                                <td>{u' ': 45819, u'"': 16, u'&': 156, u'(': 510, u',': 542, u'.': 711, u'0': 41, u'2': 247, u'4': 28, u'6': 9, u':': 3123, u'@': 15, u'B': 2865, u'D': 1388, u'F': 3007, u'H': 353, u'J': 86, u'L': 1602, u'N': 1792, u'P': 3720, u'R': 2399, u'T': 1653, u'V': 2630, u'X': 114, u'Z': 328, u'\xdf': 194, u'b': 4279, u'd': 9829, u'\xe7': 10, u'f': 11953, u'\xe9': 38, u'h': 21291, u'j': 265, u'l': 15367, u'n': 45812, u'\xf1': 24, u'p': 5859, u'\xf3': 8, u'r': 35842, u't': 37960, u'v': 2180, u'x': 225, u'z': 3830, u'!': 1, u"'": 30, u')': 510, u'-': 5658, u'/': 736, u'1': 156, u'3': 111, u'5': 13, u'\xb4': 10, u'9': 8, u'?': 6, u'A': 4349, u'C': 777, u'E': 4362, u'G': 2230, u'I': 13497, u'K': 1286, u'M': 4660, u'O': 771, u'Q': 67, u'S': 4474, u'U': 2024, u'W': 5417, u'\xd6': 771, u'\xdc': 423, u'a': 31171, u'c': 19220, u'e': 51197, u'\xe4': 1431, u'g': 15265, u'i': 42575, u'k': 12785, u'm': 13603, u'o': 19614, u'q': 46, u's': 36190, u'u': 21903, u'w': 2828, u'\xf6': 1565, u'y': 1489, u'\xfc': 1857}</td>
+                            
+                        
+                            
+                                <td>{u' ': 35611, u'&': 5, u'(': 14995, u',': 173, u'.': 8381, u'0': 7617, u'2': 9590, u'4': 7467, u'6': 1730, u'8': 1313, u'B': 4903, u'D': 2653, u'F': 328, u'H': 8362, u'J': 176, u'L': 212, u'N': 153, u'P': 430, u'R': 7765, u'T': 65, u'V': 162, u'X': 663, u'Z': 4878, u'b': 1367, u'd': 751, u'f': 97, u'h': 1929, u'l': 2104, u'n': 3283, u'p': 1461, u'r': 4208, u't': 2297, u'x': 270, u'z': 284, u')': 14995, u'-': 861, u'/': 2036, u'1': 5332, u'3': 5310, u'5': 3718, u'7': 1550, u'9': 708, u'A': 8701, u'C': 3202, u'E': 397, u'G': 6, u'I': 1107, u'K': 1351, u'M': 644, u'O': 27, u'S': 7947, u'U': 4697, u'W': 80, u'\xdc': 2, u'a': 5312, u'c': 930, u'e': 3265, u'g': 1398, u'i': 2718, u'k': 898, u'm': 1330, u'o': 2001, u's': 2253, u'u': 2165, u'w': 178, u'y': 593}</td>
+                            
+                        
+                            
+                                <td>{u'A': 14686, u'r': 56, u'G': 56, u'F': 56, u's': 849, u'K': 771, u'U': 14675, u'Z': 14675, u'a': 838, u' ': 14686, u'e': 123, u'g': 726, u'i': 771, u'h': 715, u'-': 112, u'l': 771, u'o': 715, u'n': 827, u'1': 8608, u'p': 715, u'3': 1523, u'2': 1182, u'u': 726, u'4': 3384, u'z': 56}</td>
+                            
+                        
+                            
+                                <td>{u'-': 30914, u'1': 18659, u'0': 113676, u'3': 12801, u'2': 23536, u'5': 7594, u'T': 15457, u'7': 2990, u'6': 21140, u'9': 4595, u'8': 5057, u':': 30914, u'4': 6350}</td>
+                            
+                        
+                            
+                                <td>{u'-': 30914, u'1': 21386, u'0': 109393, u'3': 13195, u'2': 27849, u'5': 7423, u'T': 15457, u'7': 3148, u'6': 21321, u'9': 3519, u'8': 3322, u':': 30914, u'4': 5842}</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>benford_is</td>
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                            
+                                <td>False</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>benford_chi</td>
+                        
+                            
+                                <td>2611.01013354</td>
+                            
+                        
+                            
+                                <td>215427.85774</td>
+                            
+                        
+                            
+                                <td>414.849782891</td>
+                            
+                        
+                            
+                                <td>10985.8906018</td>
+                            
+                        
+                            
+                                <td>11882.4129035</td>
+                            
+                        
+                            
+                                <td>72321.3490384</td>
+                            
+                        
+                            
+                                <td>72321.3490384</td>
+                            
+                        
+                    </tr>
+                
+                    <tr class="right aligned">
+                        <td>benford_dist</td>
+                        
+                            
+                                <td>{1: 6577, 2: 3407, 3: 721, 4: 711, 5: 653, 6: 739, 7: 772, 8: 939, 9: 938}</td>
+                            
+                        
+                            
+                                <td>{1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 15457, 7: 0, 8: 0, 9: 0}</td>
+                            
+                        
+                            
+                                <td>{1: 143, 2: 227, 3: 111, 4: 19, 5: 4, 6: 0, 7: 0, 8: 0, 9: 0}</td>
+                            
+                        
+                            
+                                <td>{1: 1662, 2: 6521, 3: 1444, 4: 1495, 5: 2061, 6: 286, 7: 414, 8: 80, 9: 0}</td>
+                            
+                        
+                            
+                                <td>{1: 8597, 2: 1182, 3: 1523, 4: 3384, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}</td>
+                            
+                        
+                            
+                                <td>{1: 0, 2: 15457, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}</td>
+                            
+                        
+                            
+                                <td>{1: 0, 2: 15457, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}</td>
+                            
+                        
+                    </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        </section>
+
+    <!-- FOOTER
+        <footer class="ui background vertical footer segment">
+            <div class="ui  container">
+                <div class="ui stackable inverted divided equal height stackable grid">
+                    <div class="three wide column">
+                        <h4 class="ui grey header">About</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Sitemap</a>
+                            <a href="#" class="item">Contact Us</a>
+                            <a href="#" class="item">Religious Ceremonies</a>
+                            <a href="#" class="item">Gazebo Plans</a>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <h4 class="ui inverted header">Services</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item">Banana Pre-Order</a>
+                            <a href="#" class="item">DNA FAQ</a>
+                            <a href="#" class="item">How To Access</a>
+                            <a href="#" class="item">Favorite X-Men</a>
+                        </div>
+                    </div>
+                    <div class="seven wide column">
+                        <h4 class="ui inverted header">Footer Header</h4>
+                        <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+ -->
+    <!-- SCRIPTS -->
+        <script>
+             
+        </script>
+    </body>
+</html>
