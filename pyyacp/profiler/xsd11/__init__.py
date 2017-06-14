@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
 #http://www.w3.org/TR/2009/WD-xmlschema11-2-20091203/type-hierarchy-200901.longdesc.html
 #https://www.w3.org/TR/xmlschema11-2/#built-in-datatypes
 

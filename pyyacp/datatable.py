@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import itertools
 from StringIO import StringIO
 
@@ -30,6 +34,7 @@ def parseDataTables(yacpParser, url=None, batches=80, max_tables=1, raiseError=T
 
     rows = 0
     rows_to_add=[]
+    skipped=0
     for g_rows in grouper(batches, yacpParser):
         rows += len(g_rows)
 
@@ -52,7 +57,7 @@ def parseDataTables(yacpParser, url=None, batches=80, max_tables=1, raiseError=T
                 pos = len(comments) + len(header)
                 rows_to_add.extend(g_rows[pos:])
             elif max_len == cur_dt.no_cols:
-                rows_to_add.extend(g_rows[pos:])
+                rows_to_add.extend(g_rows)
             else:
                 # not the same length, maybe different table , should not happen
                 log.warning("NOT IMPLEMENTED", filename=yacpParser.url,
@@ -69,8 +74,9 @@ def parseDataTables(yacpParser, url=None, batches=80, max_tables=1, raiseError=T
             for i, group in enumerate(grouped_L):
 
                 if group[0] == 0:   # empty line, skip
+                    skipped+=1
                     pass
-                elif group[0] == 1 or group[1]<3:
+                elif group[0] == 1 and group[1]<3:
                     # there is a group with one element, that should be the comment lines
                     # also this means a new table
                     if i == len(grouped_L) - 1 and [sum(x) for x in zip(*grouped_L)][1] < batches:
@@ -90,7 +96,7 @@ def parseDataTables(yacpParser, url=None, batches=80, max_tables=1, raiseError=T
                             start = parse_start
                     elif group[0] == cur_dt.no_cols:
                         #cur_dt.addRows(g_rows[cur_line:group[1]])
-                        rows_to_add.extend(g_rows[cur_line:group[1]])
+                        rows_to_add.extend(g_rows[cur_line:cur_line+group[1]])
                     else:
                         # seems like a new table
                         if group[1] != 1 or (
@@ -100,6 +106,7 @@ def parseDataTables(yacpParser, url=None, batches=80, max_tables=1, raiseError=T
                             # OR at the end of the group and still a full batch
                             start = cur_line
                         else:
+                            #print ("NOT TREATED", group[0])
                             # if only one row and (at the end of the file or in the middle of a group)
                             pass
 
@@ -110,8 +117,9 @@ def parseDataTables(yacpParser, url=None, batches=80, max_tables=1, raiseError=T
                                 rows_to_add=[]
                             tables.append(cur_dt)
 
-                        comments = structure_detector.guess_description_lines(g_rows[start:])
-                        header = structure_detector.guess_headers(g_rows[start:])
+                        _rows=g_rows[start:]
+                        comments = structure_detector.guess_description_lines(_rows)
+                        header = structure_detector.guess_headers(_rows)
 
                         cur_dt = DataTable(yacpParser.meta, group[0], comments=comments, headers=header, url=url, id=len(tables))
 
@@ -146,6 +154,9 @@ def parseDataTables(yacpParser, url=None, batches=80, max_tables=1, raiseError=T
     if len(tables) > max_tables:
         if raiseError:
             raise YACParserException("Too many tables (#" + str(len(tables)) + ") shapes:" + str(agg_groups))
+
+    log.info("Parsed table", skipped=skipped, tables=len(tables))
+
     if max_tables==1:
         return tables[0]
     else:
@@ -158,16 +169,30 @@ class DataTable(object):
         self.meta = meta
         self.no_cols = cols
         self.no_rows = 0
-        self.url=url
+        self.uri=url
         self.id=id
 
         self.comments = comments if comments else []
         self.header_rows = headers if headers else []
         self.id = None
+        self.columnIDs = []
         if len(self.header_rows)==1:
-            self.columnIDs=self.header_rows[0]
+            for i, v in enumerate(self.header_rows[0]):
+                if len(v)>0:
+                    self.columnIDs.append(v)
+                else:
+                    self.columnIDs.append('empty{}'.format(i))
         elif len(self.header_rows) > 1:
-            self.columnIDs = self.header_rows[0]
+
+            for i in range(0, self.no_cols):
+                added = False
+                for h_row in self.header_rows:
+                    if len(h_row[i])>0:
+                        self.columnIDs.append(h_row[i])
+                        added=True
+                        break
+                if not added:
+                    self.columnIDs.append('empty{}'.format(i+1))
         else:
             self.columnIDs =['col{}'.format(i) for i in range(1, self.no_cols+1)]
 
@@ -175,28 +200,34 @@ class DataTable(object):
 
         self.data=pd.DataFrame(columns=self.columnIDs)
 
-
-
-    def basic(self):
+    def table_structure(self):
         b={
+            'uri': self.uri,
             'rows':self.no_rows,
-            'cols':self.no_cols,
-            'uri':self.url
-
+            'columns':self.no_cols,
+            'headers':self.header_rows,
+            'comments': self.comments,
+            'comment_lines': len(self.comments),
+            'header_lines': len(self.header_rows)
         }
         return b
+
+    def table_profile(self):
+
+        meta = {k:v for k, v in self.meta.items()}
+        if 'table_tane' in self.meta:
+            meta['fd']=self.meta['table_tane']
+
+        return meta
 
     def addRows(self, rows):
         try:
             df = pd.DataFrame(list(rows), columns=self.columnIDs)
             self.data=pd.concat([self.data,df])
-            self.no_rows=self.data.shape[1]
+            #print ('addRows {} {}'.format(len(rows), self.data.shape))
+            self.no_rows=self.data.shape[0]
         except Exception as e:
-            print self.data
-            print self.columnIDs
-            print len(list(rows))
-            print list(rows)[0]
-            print self.header_rows
+            print(e)
 
     def rows(self):
         return [row for row in self.rowIter()]
@@ -218,7 +249,7 @@ class DataTable(object):
 
 
 
-    def describe_colmeta(self):
+    def colum_profiles(self):
 
         d={}
         for i in range(0, self.no_cols):
@@ -228,27 +259,6 @@ class DataTable(object):
 
             for k,v in self.column_metadata[i].items():
                 dd[k]=v
-        #     if 'data_type'  in self.column_metadata[i]:
-        #         dd['data_type']=self.column_metadata[i]['data_type']
-        #     if 'col_patterns' in self.column_metadata[i]:
-        #         dd['col_patterns']=self.column_metadata[i]['col_patterns']
-        #     if 'col_stats' in self.column_metadata[i]:
-        #         v = self.column_metadata[i]['col_stats']
-        #         dd['selectivity']=v['selectivity']['avg']
-        #         dd['selectivity_min'] = v['selectivity']['min']
-        #         dd['selectivity_max'] = v['selectivity']['max']
-        #         dd['unique'] = v['uniques']
-        #         dd['char_length_avg'] = v['char_length']['avg']
-        #         dd['char_length_min'] = v['char_length']['min']
-        #         dd['char_length_max'] = v['char_length']['max']
-        #         dd['most_value'] = v['top_values'][0]
-        #         dd['empty'] = v['empty']
-        #
-        # if 'table_tane' in self.meta:
-        #     for i,k in enumerate(self.meta['table_tane']['suggested_keys']):
-        #         for ci in range(0, self.no_cols):
-        #             d['col{}'.format(ci + 1)]['pk{}'.format(i)]= ci in k
-
 
         return pd.DataFrame(d)
 
@@ -262,43 +272,40 @@ class DataTable(object):
         :return: A string representation of the CSV table
         """
         csvstream = StringIO()
-        w = unicodecsv.writer(csvstream, encoding="utf-8", delimiter=delimiter, lineterminator=newline)
-
+        w = unicodecsv.writer(csvstream, encoding="utf-8", delimiter=str(delimiter), lineterminator=str(newline))
+        c=0
         # write description lines at top
         if comments:
-            for line in self.descriptionLines:
+            for line in self.comments:
                 w.writerow(line)
+                c+=1
         if header:
             for header in self.header_rows:
                 w.writerow(header)
+                c += 1
         for row in self.rowIter():
             w.writerow(row)
+            c += 1
+        #print( 'WROTE',c,'LINES', len([row for row in self.rowIter()]), self.data.shape)
         return csvstream.getvalue()
 
 
-    def get_meta(self):
+    def print_summary(self, column_raw=True):
+        print ('_' * 30, 'TABLE META', '_' * 30)
+        for k,v in self.table_profile().items():
+            print (k,v)
+        print ('_' * 30, 'TABLE STRUCTURE', '_' * 30)
+        for k,v in self.table_structure().items():
+            print (k,v)
+        print ('_' * 30, 'DATA {}'.format(self.data.shape), '_' * 30)
+        print (self.data.head(5))
+        print ('_' * 30, 'COLUMN PROFILE', '_' * 30)
+        print (self.colum_profiles())
 
-        meta={'table':{
-            'rows': self.no_rows,
-            'cols': self.no_cols,
-            'uri': self.url,
-            'comment_lines': len(self.comments),
-            'header_lines': len(self.header_rows)
-        }}
-        for k,v in self.meta.items():
+        if column_raw:
+            for i,c in enumerate(self.columns()):
+                print ('COL',i,set(c))
+            print('*' * 80)
 
-            meta['table'][k]=v
-
-        d = {}
-        meta['column']=d
-        for i in range(0, self.no_cols):
-            dd = d.setdefault('col{}'.format(i + 1), {})
-            for a, h in enumerate(self.header_rows):
-                dd['header{}'.format(a)] = h[i]
-
-            for k, v in self.column_metadata[i].items():
-                dd[k] = v
-
-        return meta
 
 

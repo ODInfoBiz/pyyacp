@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 from pyyacp.column_format_detector import l2_aggregate, l1_aggregate, translate_all, l3_shared_groups
 
 
@@ -7,6 +11,7 @@ def is_not_empty(value):
     return not is_empty(value)
 
 def is_empty(value):
+
     v=value.strip()
     if len(v)==0:
         return True
@@ -17,11 +22,11 @@ def detect_empty_cell( values ):
     patterns=translate_all(values)
     L2= l2_aggregate(grouped=l1_aggregate(patterns=patterns))
     s_p =l3_shared_groups(L2)
-    print l
-    print L2
-    for k in L2:
-        print k[0]
-    print s_p
+    #print l
+    #print L2
+    #for k in L2:
+    #    print k[0]
+    #print s_p
 
 
     results=[]
@@ -36,4 +41,4 @@ if __name__ == '__main__':
 
     detect_empty_cell(values)
 
-    print "1234"[4:]
+    print("1234"[4:])

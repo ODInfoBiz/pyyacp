@@ -26,7 +26,7 @@ def to_html(table, cnt, dir):
             m_order=m_order,
             comments=table.comments,
             data=table.data.head(5).to_html(classes='ui celled table'),
-            meta=table.describe_colmeta().to_dict(orient='index')#table.describe_colmeta().to_html(classes='ui celled table')
+            meta=table.colum_profiles().to_dict(orient='index')#table.describe_colmeta().to_html(classes='ui celled table')
         ).encode('utf-8'))
 
 

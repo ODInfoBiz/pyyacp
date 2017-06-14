@@ -1,9 +1,9 @@
-import random
-import string
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import math
 import numpy as np
-import timeit
-from collections import Counter
 
 from collections import defaultdict
 
@@ -94,14 +94,14 @@ class BenfordsLawDistribution(ColumnProfiler, ColumnByCellProfiler):
 
     def _profile_column(self, values, meta):
         data_type = meta['data_type']
-        if data_type==INT or data_type==FLOAT:
+        if data_type == INT or data_type == FLOAT:
             x = map(get_leading_number, values)
             for k in range(1, 10):
                 self.dv[k] = x.count(k)
         return self._compile_stats()
 
     def _compile_stats(self):
-        if len(self.dv)>0:
+        if sum(self.dv.values())>0:
             d = np.array([ self.dv.get(k,0) for k in range(1, 10)])
             y = getExpectedBenfordCount(sum(d))
 

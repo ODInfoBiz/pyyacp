@@ -1,24 +1,18 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import functools
 
-from pyyacp import column_format_detector
-import regroup
+import structlog
 
-from pyyacp.column_format_detector import aggregate_patterns, translate, pattern_comparator
+from pyyacp import column_format_detector
+from pyyacp.column_format_detector import aggregate_patterns, pattern_comparator, translate
 from pyyacp.profiler.empty_cell_detection import is_not_empty
 from pyyacp.timer import Timer, timer
-import structlog
+
 log = structlog.get_logger()
 
-
-@timer(key="profile_table")
-def apply_profilers(table, profilers=None):
-    for profiler in profilers:
-        log.info("Running profiler: [{}] {}".format(profiler.__class__, type(profiler)))
-        if isinstance(profiler, ColumnProfilerSet):
-            for i, col in enumerate(table.columns()):
-                profiler.profile_column(col, table.column_metadata[i])
-        else:
-            profiler.profile_table(table)
 
 class ColumnProfilerSet(object):
     """
@@ -32,10 +26,9 @@ class ColumnProfilerSet(object):
 
     def profile_column(self, column, meta):
         self._init()
-        with Timer(key='cloop', verbose=True):
-            for p in self.profilers:
-                result = p.profile_column(column, meta)
-                self._add_results(meta, result, p)
+        for p in self.profilers:
+            result = p.profile_column(column, meta)
+            self._add_results(meta, result, p)
 
     def _add_results(self, meta, results, p):
         if isinstance(results, dict):
@@ -70,6 +63,13 @@ class Profiler(object):
     def __init__(self, id, key):
         self.id=id
         self.key=key
+
+class TableProfiler(Profiler):
+    def __init__(self, id, key):
+        super(TableProfiler, self).__init__(id,key)
+
+    def profile_table(self, table):
+        pass
 
 class ColumnProfiler(Profiler):
     def __init__(self, id, key):

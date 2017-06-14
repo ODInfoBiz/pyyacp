@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
 import struct
 import sys
 
@@ -185,7 +188,7 @@ class STree():
         start = node.idx
         end = node.idx + node.depth
         w = self.word[start:end]
-        print u"{}{}".format('-' * depth, w)
+        print ("{}{}".format('-' * depth, w))
         for (n, _) in node.transition_links:
             if n.generalized_idxs.issuperset(stringIdxs):
                 self.show(node=n,depth=depth+1,stringIdxs=stringIdxs)

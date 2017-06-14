@@ -80,6 +80,7 @@ course_id,semester,name
 4080,17S,Nachhaltiges Personalmanagement
 4081,17S,Applications in International Marketing and Management
 4082,17S,Angewandte sozioökonomische Theorien und Methoden II
+4084,17S,Unternehmensführung
 4085,17S,Methoden I - BW
 4086,17S,Methoden II (Qualitative Sozialforschung)
 4087,17S,Wirtschaftskommunikation Deutsch 4 (Gruppe 2)
@@ -171,7 +172,6 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 4177,17S,Business Programming I
 4178,17S,E&I Core Lecture 1
 4179,17S,Diversität in Teams
-4180,17S,Research Seminar (Insbesondere für das Feld Risikomanagement und Versicherungswirtschaft)
 4181,17S,Wirtschaft im rechtlichen Kontext - Wirtschaftsprivatrecht I
 4182,17S,Fremdsprachliche Wirtschaftskommunikation II - Französisch
 4183,17S,Fremdsprachliche Wirtschaftskommunikation II - Russisch
@@ -339,6 +339,7 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 4366,17S,Fremdsprachliche Wirtschaftskommunikation I - Englisch
 4367,17S,"Exekutions-, Insolvenz- und Sanierungsrecht"
 4368,17S,Finance Paper Reading
+4369,17S,Gesellschafts- und Kapitalmarktrecht
 4370,17S,"Unternehmensnachfolge, Privatstiftung, Erbrecht"
 4371,17S,Ökonometrie I
 4373,17S,Financial Econometrics
@@ -521,7 +522,6 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 4575,17S,"Global Business Planning ""A"""
 4578,17S,Grundzüge der IKT
 4581,17S,Fachprüfungsvorbereitung für Unternehmensnachfolge - Privatstiftung - Erbrecht
-4582,17S,Research Seminar: Unternehmensrechnung und Controlling
 4583,17S,Grundlagen wissenschaftlichen Arbeitens
 4584,17S,Fremdsprachliche Wirtschaftskommunikation I - Englisch
 4585,17S,Fremdsprachliche Wirtschaftskommunikation I - Englisch
@@ -923,7 +923,6 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 5047,17S,Internationale Makroökonomik
 5048,17S,Concentration Area - Globalization and Social Policy I
 5049,17S,Concentration Area - Globalisation and Multi-Level Policy I
-5050,17S,Betriebliche Informationssysteme II
 5051,17S,International Economics: Development
 5052,17S,Fremdsprachliche Wirtschaftskommunikation III - Englisch
 5055,17S,Fachseminar Öffentliches Recht und Europarecht
@@ -956,7 +955,7 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 5083,17S,Wirtschafts- und Finanzpolitik
 5084,17S,Forschungsmethoden und Grundlagen wissenschaftlichen Arbeitens in der Wirtschaftsinformatik und im Operations Management
 5085,17S,Stressmanagement
-5088,17S,SOLV
+5088,17S,SOLV - Was ist Kapitalismus?
 5089,17S,Consumer Behavior
 5090,17S,Risk Management and Insurance
 5091,17S,Risk Management and Insurance
@@ -1589,7 +1588,7 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 5914,17S,Migration und Integration - Herausforderung mit Menschen aus muslimischem Kulturkreis
 5916,17S,Capital Market Theory
 5923,17S,Skills Course
-5924,17S,Recruiting Training for the Consulting Industry
+5924,17S,Company skills training
 5926,17S,*Sommeruni 2017* Statistik
 5927,17S,*Sommeruni 2017* Statistik
 5928,17S,Continuous Time Finance
@@ -1631,7 +1630,6 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 5988,17S,Brand Management
 5989,17S,Experiments in the Social Sciences
 5990,17S,docs@work - Doctoral Thesis Presentations: Marketing and Consumer Research
-5992,17S,Applied Econometrics
 5993,17S,Public Governance: Konzepte und Theorien der Steuerung öffentlicher und Nonprofit Organisationen
 5994,17S,Grundlagen wissenschaftlichen Arbeitens
 5995,17S,SBWL Kurs I (Grundkurs) - Organisation und Governance
@@ -1694,7 +1692,7 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 6067,17S,Fremdsprachliche Wirtschaftskommunikation III - Englisch
 6068,17S,Fremdsprachliche Wirtschaftskommunikation III - Englisch
 6069,17S,Fremdsprachliche Wirtschaftskommunikation II - Englisch
-6072,17S,Einfühung in die Theorie und Praxis von DSGE Modellen
+6072,17S,Einführung in die Theorie und Praxis von DSGE Modellen
 6073,17S,K5 - Enterprise Risk Management (A Case Study Approach)
 6074,17S,Mathematical Methods 1-Mathematics Essentials
 6075,17S,Angewandte Mikroökonomik
@@ -1771,7 +1769,6 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 6153,17S,Verfassungsrecht in Theorie und Praxis
 6154,17S,Erbrecht und Vermögensnachfolge
 6155,17S,ZuWi II: Nachhaltige Ressourcennutzung im Zeitalter der Globalisierung
-6156,17S,Teatro & Professione
 6157,17S,Falllösungskurs Zivilgerichtliches Verfahren
 6158,17S,ZuWi II: Political Economy of the Environment
 6159,17S,Introduction to Empirical Social Research (Einführung in die empirische Sozialforschung)
@@ -1830,7 +1827,6 @@ Von der Vertragsverhandlung bis zum Trennungsgespräch"
 6226,17S,Case Studies in Auditing
 6227,17S,Empirical Research on Economic Inequality
 6228,17S,Capital account regulation: an applied approach
-6229,17S,Tax Compliance Research Seminar
 6230,17S,Lesekreis - John Maynard Keynes
 6231,17S,Integrierte Fallstudien zum österreichischen und europäischen Verfassungs- und allgemeinen Verwaltungsrecht
 6232,17S,Integrierte Fallstudien zum Verwaltungsverfahren und Rechtsschutz

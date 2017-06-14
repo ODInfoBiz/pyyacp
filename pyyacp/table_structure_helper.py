@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
 import itertools
 
 from pyyacp import column_format_detector
@@ -46,12 +49,13 @@ class AdvanceStructureDetector(object):
             else:
                 # same length as the data rows, we should check if there are empty columns
                 #if there are more than 50% empty columns, consider this a header line
-                for i in range(cur_line, group[1] + cur_line):
+                for lineno in range(cur_line, group[1] + cur_line):
                     empty_cells = 0.0
-                    for a, cell in enumerate(reversed(sample[i])):
+                    for a, cell in enumerate(reversed(sample[lineno])):
                         if len(cell.strip()) == 0 and empty_cells == a:
                             empty_cells += 1
-                    if empty_cells / len(sample[i]) > 0.5:
+                    r= empty_cells / len(sample[lineno]) if len(sample[lineno])>0 else 0
+                    if  r > 0.5:
                         c_lines += 1
                     else:
                         break
@@ -62,7 +66,7 @@ class AdvanceStructureDetector(object):
 
     def _guess_header_by_group(self, groups, verbose=False):
         if verbose:
-            print " _guess_header_by_group({})".format(groups)
+            print(" _guess_header_by_group({})".format(groups))
         if len(groups)==1:
             ##asume no header
             return -1
@@ -75,7 +79,7 @@ class AdvanceStructureDetector(object):
             for i, pat in enumerate(groups):
                 if h is not None:
                     if verbose:
-                        print "  cell_pattern-{}: {}".format(i, pat)
+                        print("  cell_pattern-{}: {}".format(i, pat))
                     h_sym = set(h)
                     p_sym = set(pat)
                     delta_sym = h_sym.symmetric_difference(p_sym)
@@ -84,21 +88,21 @@ class AdvanceStructureDetector(object):
                     # Do we have a header?
                     # 1)
                     if verbose:
-                        print "   ascii in h:{},digits in new:{}".format(h_sym.issubset(ascii),
+                        print("   ascii in h:{},digits in new:{}".format(h_sym.issubset(ascii),
                                                                          len(new_sym) > 0 and new_sym.issubset(
-                                                                             digits))
+                                                                             digits)))
                     digits_added = h_sym.issubset(ascii) and len(new_sym) > 0 and new_sym.issubset(digits)
                     # 2) new symbols
                     new_symbols = len(new_sym) > 0 and not new_sym.issubset(h_sym)
                     if verbose:
-                        print "   new symbols added:{} subset:{}".format(new_symbols,new_sym.issubset(h_sym))
+                        print("   new symbols added:{} subset:{}".format(new_symbols,new_sym.issubset(h_sym)))
                     is_header = (digits_added or new_symbols)
                     if verbose:
-                        print "   header?: {} h:{} vs p{}, delta:{}, new:{}".format(is_header, h_sym, p_sym, delta_sym,
-                                                                                 new_sym)
+                        print("   header?: {} h:{} vs p{}, delta:{}, new:{}".format(is_header, h_sym, p_sym, delta_sym,
+                                                                                 new_sym))
                     if is_header:
                         if verbose:
-                            print "   >>>>we think we have a header: {}".format(h)
+                            print("   >>>>we think we have a header: {}".format(h))
                         header = i - 1
                     elif header != -1:
                         break
@@ -115,7 +119,7 @@ class AdvanceStructureDetector(object):
         grouped_L = [(k, sum(1 for i in g)) for k, g in itertools.groupby(r_len)]
         est_colNo = _most_common_oneliner(r_len)
 
-        if grouped_L[0][0]==est_colNo:
+        if len(grouped_L)>0 and grouped_L[0][0] == est_colNo:
             ##lets assume that the first group is the one we use for the header detection
             ##also make sure that the length is the estimated col length
 
@@ -124,15 +128,15 @@ class AdvanceStructureDetector(object):
             guessed_col_header = []
             for col in cols:
                 if verbose:
-                    print "Column:{}".format(col)
+                    print ("Column:{}".format(col))
                 pattern = column_format_detector.translate_all(col,sort=False)
                 L1 = column_format_detector.l1_aggregate(pattern)
                 symbols = column_format_detector.l2_aggregate(grouped=L1)
                 d=[ (k[0],sum([cc[1] for cc in k[2]])) for k in symbols]
                 p_guess_headers = self._guess_header_by_group(d,verbose=verbose)
                 if verbose:
-                    print p_guess_headers
-                    print 'symbols:{}'.format(symbols)
+                    print (p_guess_headers)
+                    print ('symbols:{}'.format(symbols))
                 guessed_col_header.append(p_guess_headers)
 
             def mode(array):
@@ -144,13 +148,17 @@ class AdvanceStructureDetector(object):
             max_h = max(guessed_col_header) if len(guessed_col_header)>0 else 0
             #print sample
             if verbose:
-                print "most_common:{}, max:{}, modes:{}, {}".format(mc, max_h, mode(guessed_col_header), guessed_col_header)
+                print ("most_common:{}, max:{}, modes:{}, {}".format(mc, max_h, mode(guessed_col_header), guessed_col_header))
             if mc >= 0:
                 return sample[0: mc]
             return []
 
         else:
-            raise ValueError("Cannot detect header, too many groups or row length does not match")
+            if len(grouped_L)>0:
+                raise ValueError("Header detectiong failed, no potential header group ( likely cause, too many empty cells -> description line)")
+            else:
+                raise ValueError(
+                    "Header detectiong failed, row length does not match (est:{}, is:{}".format(est_colNo,grouped_L[0][0]))
 
 
 

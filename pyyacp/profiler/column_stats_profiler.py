@@ -1,4 +1,6 @@
-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
 import operator
 from collections import defaultdict
 
@@ -16,7 +18,7 @@ class ColumnStatsProfiler(ColumnProfiler,ColumnByCellProfiler):
         self.vlen = []
         self.dv = defaultdict(int)
 
-    @timer(key='csp_column', verbose=True)
+    @timer(key='csp_column')
     def profile_column(self, column, meta):
         return self._profile_column(column, meta)
 
@@ -43,11 +45,11 @@ class ColumnStatsProfiler(ColumnProfiler,ColumnByCellProfiler):
 
         if len(a[a==0])>0:
             self.dv.pop('')
-        stats['min_value'] = min(self.dv)
-        stats['max_value'] = max(self.dv)
+        stats['min_value'] = min(self.dv) if len(self.dv)>0 else ''
+        stats['max_value'] = max(self.dv) if len(self.dv)>0 else ''
 
-        stats['min_len'] = min(an)
-        stats['max_len'] = max(an)
+        stats['min_len'] = min(an) if len(an)>0 else 0
+        stats['max_len'] = max(an) if len(an)>0 else 0
         stats['mean_len'] = np.mean(an)
         stats['empty']= len(a[a==0])
         stats['distinct']=len(self.dv)
@@ -56,6 +58,7 @@ class ColumnStatsProfiler(ColumnProfiler,ColumnByCellProfiler):
         sorted_values = sorted(self.dv.items(), key=operator.itemgetter(1), reverse=True)
         top_values = [(sorted_values[i][0], int(sorted_values[i][1])) for i in range(min(5, len(self.dv)))]
 
-        stats['constancy']=max(self.dv.values())/float(len(a))
-        stats['top_value'] = top_values[0]
+
+        stats['constancy']=max(self.dv.values())/float(len(a)) if len(self.dv)>0 and  len(a)>0 else 0
+        stats['top_value'] = top_values[0] if len(top_values)>0 else None
         return stats

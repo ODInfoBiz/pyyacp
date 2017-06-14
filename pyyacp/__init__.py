@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 try:
     from StringIO import StringIO
 except ImportError:
@@ -5,12 +9,13 @@ except ImportError:
 
 
 
-import structlog
+
 import unicodecsv
 
 import anycsv
 from pyyacp.table_structure_helper import SimpleStructureDetector
 
+import structlog
 log = structlog.get_logger()
 
 
@@ -18,19 +23,26 @@ class YACParserException(Exception):
     pass
 
 
+
+
 class YACParser(object):
-    def __init__(self, filename=None, url=None, content=None, sample_size=20, skip_guess_encoding=False, structure_detector=SimpleStructureDetector(), verbose=False):
+    def __init__(self, filename=None, url=None, content=None, sample_size=20, skip_guess_encoding=False, structure_detector=SimpleStructureDetector(), max_file_size=-1):
 
-        self.table = anycsv.reader(filename=filename, url=url, content=content, skip_guess_encoding=skip_guess_encoding, sniff_lines=sample_size)
+        self.table = anycsv.reader(filename=filename, url=url, content=content, skip_guess_encoding=skip_guess_encoding, sniff_lines=sample_size,max_file_size=max_file_size)
 
-        keys = ['encoding', 'url', 'filename', 'delimiter', 'quotechar','lineterminator','skipinitialspace','quoting','delimiter','quotechar','doublequote']
+        keys = ['encoding', 'url', 'filename', 'delimiter', 'quotechar','lineterminator','skipinitialspace','quoting','delimiter','doublequote']
         self.meta = {}
         for k,v in self.table.__dict__.items():
             if k in keys and v:
                 self.meta[k] = v
+        for k,v in self.table.dialect.items():
+            if k in keys:
+                self.meta[k] = v
+        if 'url' in self.meta:
+            self.meta['uri'] = self.meta.pop('url')
+
         #self.meta['dialect'] = self.table.dialect
-        if verbose:
-            log.info("Input file dialect", dialect=self.meta['dialect'], encoding=self.meta['encoding'])
+        log.debug("Input file dialect", dialect=self.table.dialect, encoding=self.meta['encoding'])
         self.sample = []
         for i, row in enumerate(self.table):
             if i >= sample_size:
@@ -43,12 +55,12 @@ class YACParser(object):
         if self.descriptionLines is None:
             raise ValueError("structure_detector should return a value, if no description lines exists, return empty")
         # allow multple header lines if existing, if none exist return 0
-        self.header_lines = structure_detector.guess_headers(self.sample, verbose=verbose)
+        self.header_lines = structure_detector.guess_headers(self.sample)
         if self.header_lines is None:
             raise ValueError("structure_detector should return a value, if no header lines exists, return empty")
         self.columns=structure_detector.guess_columns(self.sample)
 
-        self.table.seek_line(len(self.descriptionLines) + len(self.header_lines))
+        self.table.seek_line(0)#len(self.descriptionLines) + len(self.header_lines))
 
     def seek_line(self, lineNo):
         self.table.seek_line(lineNo)

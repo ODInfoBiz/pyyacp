@@ -6,8 +6,9 @@ import sys
 
 from pyyacp.html.to_html import to_html
 import  pyyacp.datatable as datatable
-from pyyacp.profiler import  ColumnPatternProfiler, ColumnRegexProfiler, apply_profilers, ColumnByCellProfilerSet, \
+from pyyacp.profiler import  ColumnPatternProfiler, ColumnRegexProfiler, ColumnByCellProfilerSet, \
     ColumnProfiler, ColumnProfilerSet
+from profiler.profiling import apply_profilers
 
 from pyyacp.profiler.column_stats_profiler import ColumnStatsProfiler
 from pyyacp.profiler.data_type_detection import DataTypeDetection

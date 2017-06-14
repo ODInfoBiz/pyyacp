@@ -1,11 +1,15 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
 import os
 import traceback
 
 import datetime
 import requests
-import structlog
+
 from collections import defaultdict
 import time
+import structlog
 log =structlog.get_logger()
 
 odpwAPI="http://data.wu.ac.at/portalwatch/api/v1/"
@@ -41,9 +45,9 @@ def url_iter(portalID, snapshot=getCurrentSnapshot()):
 
 def csvContent_iter(portalID, snapshot=getCurrentSnapshot(), useDatamonitor=False):
     urls=[url for url in url_iter(portalID, snapshot)]
-    print len(urls)
+    print (len(urls))
     for url in urls:
-        print url
+        print (url)
         content=None
         if useDatamonitor:
             inforequestURL = getURLInfo(datamonitorAPI, url)
@@ -51,7 +55,7 @@ def csvContent_iter(portalID, snapshot=getCurrentSnapshot(), useDatamonitor=Fals
             log.info("DATAMONITOR SUCCESS", url=inforequestURL, status=info.status_code)
             if info.status_code == 200:
                 data = info.json()
-                print data
+                print (data)
                 if 'status' not in data or data['status'] == '404':
                     indexFromURL = True
             content=None
@@ -74,13 +78,12 @@ def cached(uri, content=None):
     filename=os.path.join(base,hashid+".csv")
     if not os.path.isfile(filename):
         if not content:
-            resp = requests.get(uri, stream=True)
+            resp = requests.get(uri)
             if resp.status_code == 200:
-                content=resp.text
+                content=resp.content
         if content:
             with open(filename, "wb") as handle:
-                for data in resp.iter_content():
-                    handle.write(data)
+                handle.write(content)
         else:
             return None
 

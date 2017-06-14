@@ -1,3 +1,8 @@
+
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 from pyyacp.profiler import  ColumnProfiler
 
 
@@ -14,6 +19,9 @@ types=[
     (INT,re.compile('^\[?[+/-]*\]?\d+$')),
     (DATETIME, re.compile('^\d{4}-\d{2}-\d{2}([C ]+\d{2}:\d{2}:\d{2})$')),
     (DATE, re.compile('^\d{4}-\d{2}-\d{2}$')), #1111-11-11
+    (DATE, re.compile('^\d{4}/\d{2}/\d{2}$')), #1111/11/11
+    (DATE, re.compile('^\d{2}/\d{2}/\d{4}$')),#11/11/1111
+
     (TIME, re.compile('^\d{2}:\d{2}(:\d{2})?$')) #1111-11-11
 ]
 
@@ -35,9 +43,10 @@ class DataTypeDetection(ColumnProfiler):
         gtypes = set([])
         for p in pattern:
             for ptype in types:
-                m=ptype[1].match(p[0])
-                if m:
-                    gtypes.add(ptype[0])
+                if p[0] is not None:
+                    m=ptype[1].match(p[0])
+                    if m:
+                        gtypes.add(ptype[0])
         if len(gtypes) != 1:
             return UNICODE
         d= gtypes.pop()

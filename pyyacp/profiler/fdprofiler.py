@@ -1,23 +1,26 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import time
 from collections import defaultdict
 from itertools import chain, combinations
 
-from pyyacp.profiler import Profiler
-from pyyacp.timer import Timer
+from pyyacp.profiler import TableProfiler
+from pyyacp.timer import Timer, timer
 
 __author__ = 'nina'
 
-class FDProfiler(Profiler):
+class FDProfiler(TableProfiler):
 
     def __init__(self):
         super(FDProfiler, self).__init__('tane','table_tane')
 
-
-    def _profile(self, datatable):
-        with Timer(key="FDAnalyserAnalyser") as t:
-            fd = TANEAlgorithm()
-            stats= fd.process(datatable)
-            datatable.meta[self.key]=stats
+    @timer(key='fd_table')
+    def profile_table(self, datatable):
+        fd = TANEAlgorithm()
+        stats= fd.process(datatable)
+        datatable.meta[self.key]=stats
 
 
 class TANEAlgorithm(object):
@@ -66,14 +69,15 @@ class TANEAlgorithm(object):
 
         stats = {}
         stats['dependencies'] = self.dependencies
+
         t1 = time.clock()
-        stats['fd_processing_time'] = t1 - t0
-        stats['fd_checks'] = self.checks
+        #stats['fd_processing_time'] = t1 - t0
+        #stats['fd_checks'] = self.checks
 
         stats['suggested_keys'] = self.suggestKeys()
         stats = self.transformToLists(stats)
 
-        return stats
+        return stats['suggested_keys']
 
 
 

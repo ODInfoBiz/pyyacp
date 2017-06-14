@@ -41,7 +41,7 @@ for uri, csv_file in csvContent_iter(portalID):
         print '_' * 30, 'META', '_' * 30
         for k in table.meta:
             print '[{}] {} '.format(k, table.meta[k])
-        print table.describe_colmeta()
+        print table.colum_profiles()
 
         t.append(table)
     except Exception as e:

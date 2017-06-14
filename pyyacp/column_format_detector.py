@@ -1,26 +1,28 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+
+
 import functools
-import re, string, timeit
+import string
 import itertools
-import difflib
 from difflib import SequenceMatcher as SM
 from itertools import groupby
 
 from collections import defaultdict
-
-from pyyacp.testing.value_pattern_types_list import make_pattern, random_number
+from pyyacp.suffix_tree import STree
 from pyyacp.timer import Timer, timer
 
 #>>>>>>>>>> TRANSLATE >>>>>>>>>>>>>>>>>
 
-UPPER=u'C'
-UPPER_PLACEHOLDER=u'A'
-LOWER=u'c'
-LOWER_PLACEHOLDER=u'a'
-DIGIT=u'1'
-DIGIT_PLACEHOLDER=u'0'
-SPECIAL=u'$'
-BRACKET=u'ß'
+UPPER='C'
+UPPER_PLACEHOLDER='A'
+LOWER='c'
+LOWER_PLACEHOLDER='a'
+DIGIT='1'
+DIGIT_PLACEHOLDER='0'
+SPECIAL='$'
+BRACKET='ß'
 
 
 ALL=[UPPER,LOWER,DIGIT,SPECIAL,BRACKET,'+','-',' ']
@@ -54,7 +56,7 @@ def make_trans_table(in_out):
 def make_trans_table_unicode(in_out):
     translate_table={}
     for i, o in in_out.items():
-        for char in i.decode('utf-8'):
+        for char in i:
             translate_table[ord(char)]=unicode(o)
 
     return translate_table
@@ -71,16 +73,15 @@ def translate(input, trans_table=all_table_unicode):
 
 @timer(key='translate_all')
 def translate_all(inputs, filter_empty=True, sort=True):
-    with Timer(key='translate {}'.format(len(inputs)), verbose=True, store=False):
-        p = [translate(i) for i in inputs  if not filter_empty or len(i.strip())>0]
-        if sort:
-            p = sorted(p, key=functools.cmp_to_key(pattern_comparator))
-        return p
+    p = [translate(i) for i in inputs  if not filter_empty or len(i.strip())>0]
+    if sort:
+        p = sorted(p, key=functools.cmp_to_key(pattern_comparator))
+    return p
 
 ### pattern to sorted unique list of its symbols
 def pattern_to_unique_symbols(pattern):
     ''' Builds for each set a sorted string with unique symbols'''
-    return u''.join(sorted(list(set(pattern))))
+    return ''.join(sorted(list(set(pattern))))
 
 def patterns_to_unique_symbols(patterns):
     ''' Builds for each set a sorted string with unique symbols'''
@@ -105,7 +106,7 @@ def aggregate_group_of_same_symbols(patterns=None, values=None):
             symbols = set(pattern)
         else:
             if set(pattern) != symbols:
-                raise ValueError("The list of patterns contains not all the same symbols: {} vs {}".format(symbols,set(input)))
+                raise ValueError("The list of patterns contains not all the same symbols: {} vs {}".format(symbols,set(pattern)))
 
         if p is None:  # nothing aggregated yet
             p = pattern
@@ -136,7 +137,7 @@ def aggregate_group_of_pattern_tuples(p_tuples):
     return (agg_pattern , cnt )
 
 def unique_order(seq):
-    return u''.join([ x[0] for x in groupby(seq)])
+    return ''.join([ x[0] for x in groupby(seq)])
 
 def l1_aggregate(patterns, ind=0, verbose=False):
     '''
@@ -146,65 +147,63 @@ def l1_aggregate(patterns, ind=0, verbose=False):
     :return:
         return a list of pattern groups (pattern, count)
     '''
-    with Timer(key="L1: {} patterns".format(len(patterns)), verbose=True, store=False):
-        l1_grouped = [(k, sum(1 for i in g)) for k, g in itertools.groupby(patterns)]
-        if verbose:
-            print "{} L{}: {} groups, {}".format(' '*(ind+1),1,len(l1_grouped),l1_grouped)
-        return l1_grouped
+    l1_grouped = [(k, sum(1 for i in g)) for k, g in itertools.groupby(patterns)]
+    if verbose:
+        print("{} L{}: {} groups, {}".format(' '*(ind+1),1,len(l1_grouped),l1_grouped))
+    return l1_grouped
 
 
 def l2_aggregate(patterns=None, grouped=None, ind=0, verbose=False):
-    with Timer(key="L2", verbose=True, store=False):
-        '''
-        :param patterns:
-        :param grouped:
-        :param ind:
-        :param verbose:
-        :return: a list of aggregated group information ( unique_order_pattern, len, [l1 groups (pattern, cnt) ]
-        '''
-        if grouped is None and patterns:
-            grouped = l1_aggregate(patterns)
+    '''
+    :param patterns:
+    :param grouped:
+    :param ind:
+    :param verbose:
+    :return: a list of aggregated group information ( unique_order_pattern, len, [l1 groups (pattern, cnt) ]
+    '''
+    if grouped is None and patterns:
+        grouped = l1_aggregate(patterns)
 
-        l2_grouped_agg = []
-        for k, g in itertools.groupby(grouped, lambda x: unique_order(x[0])):
-            g=[ i for i in g] #we need to get this since groupby gives an iterator which can be exhausted
-            l2_grouped_agg.append((k,len(g),g))
+    l2_grouped_agg = []
+    for k, g in itertools.groupby(grouped, lambda x: unique_order(x[0])):
+        g=[ i for i in g] #we need to get this since groupby gives an iterator which can be exhausted
+        l2_grouped_agg.append((k,len(g),g))
 
-        if verbose:
-            print "{} L{}: {} groups, {}".format(' '*(ind+2),2,len(l2_grouped_agg),l2_grouped_agg)
-        return l2_grouped_agg
+    if verbose:
+        print("{} L{}: {} groups, {}".format(' '*(ind+2),2,len(l2_grouped_agg),l2_grouped_agg))
+    return l2_grouped_agg
 
-@timer(key='l3_shared_groups', verbose=True)
+@timer(key='l3_shared_groups')
 def l3_shared_groups(L2, ind=0, verbose=False):
 
     g_l2_keys=[ g[0] for g in L2 ]
 
-    from suffix_tree import STree
+
     st = STree(g_l2_keys)
     lcs=st.lcs()
     if lcs is not None and len(lcs)>0:
         #we have the longest common shared subsequence, lets return it
         return {lcs:g_l2_keys}
 
-    import numpy as np
-    import sklearn.cluster
-    import distance
+    #import numpy as np
+    #import sklearn.cluster
+    #import distance
 
-    words = "YOUR WORDS HERE".split(" ")  # Replace this line
-    words = np.asarray(words)  # So that indexing with a list will work
-    def dist(a,b):
-        match = SM(None, a, b).find_longest_match(0, len(a), 0, len(b))
-        return match.size
+    #words = "YOUR WORDS HERE".split(" ")  # Replace this line
+    #words = np.asarray(words)  # So that indexing with a list will work
+    #def dist(a,b):
+    #    match = SM(None, a, b).find_longest_match(0, len(a), 0, len(b))
+    #    return match.size
 
-    lev_similarity = -1 * np.array([[dist(w1, w2) for w1 in words] for w2 in words])
+    #lev_similarity = -1 * np.array([[dist(w1, w2) for w1 in words] for w2 in words])
 
-    affprop = sklearn.cluster.AffinityPropagation(affinity="precomputed", damping=0.5)
-    affprop.fit(lev_similarity)
-    for cluster_id in np.unique(affprop.labels_):
-        exemplar = words[affprop.cluster_centers_indices_[cluster_id]]
-        cluster = np.unique(words[np.nonzero(affprop.labels_ == cluster_id)])
-        cluster_str = ", ".join(cluster)
-        print(" - *%s:* %s" % (exemplar, cluster_str))
+    #affprop = sklearn.cluster.AffinityPropagation(affinity="precomputed", damping=0.5)
+    #affprop.fit(lev_similarity)
+    #for cluster_id in np.unique(affprop.labels_):
+    #    exemplar = words[affprop.cluster_centers_indices_[cluster_id]]
+    #    cluster = np.unique(words[np.nonzero(affprop.labels_ == cluster_id)])
+    #    cluster_str = ", ".join(cluster)
+    #    print(" - *%s:* %s" % (exemplar, cluster_str))
 
     ## Ok this is trickier, we have no common pattern, that means
     #1 we can try to find differnt groups, or
@@ -265,7 +264,6 @@ def l3_aggregate(L2, len_patterns, ind=0, verbose=False, run=1, max_presub_runs=
         print("{} L3 L2:{}".format(' '*(3+ind), L2))
 
     s_p = l3_shared_groups(L2, ind=ind, verbose=verbose)
-    print s_p
     if len(s_p) != 1:
         if len(L2) > 5:  # len(L2)/float(len(patterns)) >0.01 or
             # we do not have any hope to aggregate the L2 patterns in a meaningful way
@@ -295,12 +293,12 @@ def l3_aggregate(L2, len_patterns, ind=0, verbose=False, run=1, max_presub_runs=
     results=[]
     for k, v in s_p.items():
         if verbose:
-            print("{} aggregating {},{}".format(u' '*(ind+4),k.encode('utf8'), v))
+            print("{} aggregating {},{}".format(' '*(ind+4),k.encode('utf8'), v))
         
         ## check, if the pattern group has only one element with size 1, not much to aggregate
         t=True
         if len(v)==1:
-            for g in l3_get_patterns_in_L2(L2, v): #u'1', 1, [(u'1', 5)])
+            for g in l3_get_patterns_in_L2(L2, v): #'1', 1, [('1', 5)])
                 if len(g[2])==1 and g[2][0][1]==1:
                     results.append(g[2][0])
                     t=False    
@@ -317,8 +315,8 @@ def l3_aggregate(L2, len_patterns, ind=0, verbose=False, run=1, max_presub_runs=
             m = SM(None, k, g[0]).find_longest_match(0, len(k), 0, len(g[0]))
             o, l = g[0][:m.b], g[0][m.b+m.size:] #split in prefix and suffix
 
-            s_pre = o if len(o)>0 else u''
-            s_suf = l if len(l)>0 else u''
+            s_pre = o if len(o)>0 else ''
+            s_suf = l if len(l)>0 else ''
             op_b.add(o)
             op_a.add(l)
             
@@ -359,13 +357,13 @@ def l3_aggregate(L2, len_patterns, ind=0, verbose=False, run=1, max_presub_runs=
         for p in p_to_agg:
             cnt+=p[1]
             for i,x in enumerate(itertools.groupby(p[0])):
-                p_groups[i].append(u''.join([a for a in x[1] ]))
-        agg_pattern=u''.join([aggregate_group_of_same_symbols(patterns) for patterns in p_groups ])
+                p_groups[i].append(''.join([a for a in x[1] ]))
+        agg_pattern=''.join([aggregate_group_of_same_symbols(patterns) for patterns in p_groups ])
         
         if verbose:
             print ("{}-{}- K:'{}'".format(" "*(ind+4),ind,k))
-            print "{}-{}- PP {}".format(" "*(ind+5),ind, p_prefix)
-            print "{}-{}- PS {}".format(" "*(ind+5),ind,p_suffix)
+            print ("{}-{}- PP {}".format(" "*(ind+5),ind, p_prefix))
+            print ("{}-{}- PS {}".format(" "*(ind+5),ind,p_suffix))
 
 
         if run<max_presub_runs:
@@ -375,8 +373,8 @@ def l3_aggregate(L2, len_patterns, ind=0, verbose=False, run=1, max_presub_runs=
             s_op_a = u"[{}]".format('/'.join([aa[0] for aa in agg_p_suffix if aa[0] is not None]))
 
             if verbose:
-                print "{}-{}- agg_p_prefix {}".format(" "*(ind+5),ind,agg_p_prefix)
-                print "{}-{}- agg_p_suffix {}".format(" "*(ind+5),ind,agg_p_suffix)
+                print ("{}-{}- agg_p_prefix {}".format(" "*(ind+5),ind,agg_p_prefix))
+                print ("{}-{}- agg_p_suffix {}".format(" "*(ind+5),ind,agg_p_suffix))
 
 
         else:
@@ -393,14 +391,14 @@ def l3_aggregate(L2, len_patterns, ind=0, verbose=False, run=1, max_presub_runs=
             # if verbose:
             #    print "{} {}- s_op_a {} {}".format(" "*(ind+5),ind,s_op_a,agg_p_suffix)
 
-        if len(s_op_b) == 4 or len(s_op_b)==2:
+        if (len(s_op_b) == 4 and '{' in s_op_b) or len(s_op_b)==2:
             s_op_b = ''
-        if len(s_op_a) == 4 or len(s_op_a)==2:
+        if (len(s_op_a) == 4 and '{' in s_op_b) or len(s_op_a)==2:
             s_op_a = ''
             
         #if verbose:
         #    print "{}-{}- Result K:'{}' pre:{} pat:{} suf:{}".format(" "*(ind+4),ind,k, s_op_b, agg_pattern, s_op_a)
-        results.append((u''.join([s_op_b, agg_pattern, s_op_a]),cnt))
+        results.append((''.join([s_op_b, agg_pattern, s_op_a]),cnt))
     return results
 
 
@@ -455,66 +453,66 @@ def pattern_comparator_length(pattern1, pattern2):
     return sim
 
 def aggregate_patterns(patterns, size=1, verbose=False, ind=0, run=1):
-    with Timer(key="agg {} patterns (run:{})".format(len(patterns), run),verbose=True):
-        ''' This method tries to aggregate all patterns into one.
-        Basic assumption is that all patterns share a common sub-pattern.
-        If that is not the case, the methods return groups of patterns which could be aggregated.
 
-        The heuristic works as follows.
-        1) Build groups of patterns and their frequency e.g. ( 'Aaaaa',1), ('Aaaa',1)
-        2) We can sort the groups by considering the symbols, e.g. only ascii before digits
+    ''' This method tries to aggregate all patterns into one.
+    Basic assumption is that all patterns share a common sub-pattern.
+    If that is not the case, the methods return groups of patterns which could be aggregated.
 
-        '''
-        if len(patterns)==0:
-            return [ (None , 0) ]
+    The heuristic works as follows.
+    1) Build groups of patterns and their frequency e.g. ( 'Aaaaa',1), ('Aaaa',1)
+    2) We can sort the groups by considering the symbols, e.g. only ascii before digits
 
-        L1 = l1_aggregate(patterns, ind=ind, verbose=verbose)
-        #L1: [(u'1', 6)]
-        if len(L1)==1:
-            return L1
+    '''
+    if len(patterns)==0:
+        return [ (None , 0) ]
 
-        L2 = l2_aggregate(grouped=L1, ind=ind, verbose=verbose)
-        # L2: [(u'1', 6, [u'1', u'1', u'1', u'1', u'1', u'1'])]
-        if len(L2)==1:
-            if len(L2[0][0])==1:
-                #one L2 pattern with only one symbol
-                return [ aggregate_group_of_pattern_tuples(L2[0][2]) ]
-            else:
-                #one L2 pattern but with several symbols
-                #aggregate each symbol and concat the groups
-                p_groups=[ [] for a in range(0, len(L2[0][0]) ) ]
-                cnt=0
-                for p in L2[0][2]:
-                    cnt+=p[1]
-                    for i,x in enumerate(itertools.groupby(p[0])):
-                        p_groups[i].append(''.join([a for a in x[1] ]))
+    L1 = l1_aggregate(patterns, ind=ind, verbose=verbose)
+    #L1: [('1', 6)]
+    if len(L1)==1:
+        return L1
 
-                agg_pattern=''.join([aggregate_group_of_same_symbols(patterns) for patterns in p_groups ])
-                if verbose:
-                    print '{} > {}\n{} < {}'.format(' '*(ind+2),p_groups,' '*(ind+2),agg_pattern )
-                return [ ( agg_pattern,cnt ) ]
+    L2 = l2_aggregate(grouped=L1, ind=ind, verbose=verbose)
+    # L2: [('1', 6, ['1', '1', '1', '1', '1', '1'])]
+    if len(L2)==1:
+        if len(L2[0][0])==1:
+            #one L2 pattern with only one symbol
+            return [ aggregate_group_of_pattern_tuples(L2[0][2]) ]
         else:
-            L3 = l3_aggregate(L2, len(patterns), ind=ind, verbose=verbose, run=run)
-            if len(L3)<=size:
-                return L3
-            elif len(L3)==0:
-                return []
-            else:
-                # Nothing in common
-                # we could return the unique of all patterns
-                c = sum([x[1] for x in L3])
+            #one L2 pattern but with several symbols
+            #aggregate each symbol and concat the groups
+            p_groups=[ [] for a in range(0, len(L2[0][0]) ) ]
+            cnt=0
+            for p in L2[0][2]:
+                cnt+=p[1]
+                for i,x in enumerate(itertools.groupby(p[0])):
+                    p_groups[i].append(''.join([a for a in x[1] ]))
 
-                sym = u''.join( [x for x in set(u''.join(x[0] for x in L3)) if x in ALL])
-                return [(collapse([x[0] for x in L3]), c)]
+            agg_pattern=''.join([aggregate_group_of_same_symbols(patterns) for patterns in p_groups ])
+            if verbose:
+                print ('{} > {}\n{} < {}'.format(' '*(ind+2),p_groups,' '*(ind+2),agg_pattern ))
+            return [ ( agg_pattern,cnt ) ]
+    else:
+        L3 = l3_aggregate(L2, len(patterns), ind=ind, verbose=verbose, run=run)
+        if len(L3)<=size:
+            return L3
+        elif len(L3)==0:
+            return []
+        else:
+            # Nothing in common
+            # we could return the unique of all patterns
+            c = sum([x[1] for x in L3])
+
+            sym = ''.join( [x for x in set(''.join(x[0] for x in L3)) if x in ALL])
+            return [(collapse([x[0] for x in L3]), c)]
 
 def collapse(patterns):
     if len(patterns)<3:
-        sym = u'/'.join(patterns)
+        sym = '/'.join(patterns)
         return sym
     else:
-        s=set(u''.join(patterns))
-        sym = u''.join([x for x in s if x in ALL])
-        return u'{{{}}}'.format(sym)
+        s=set(''.join(patterns))
+        sym = ''.join([x for x in s if x in ALL])
+        return '{{{}}}'.format(sym)
 
 @timer(key="aggregate")
 def aggregate(values, size=1,verbose=False):
@@ -526,20 +524,21 @@ if __name__ == '__main__':
 
     fake = Factory.create()
     examples=[
-        #[u'1',u'2',u'3',u'4',u'5',u'6',u' '],
-        #[u'-1', u'+2', u'-3', u'4', u'5', u'6',u'-'],
-        #[u'-1', u'+2', u'-3', u'4', u'5', u'6'],
-        #[u'Tim Tom', u'Ulf Uls', u'Max Maxi', u'Alf Also', u'C. A. Term', u'123']
+        #['1','2','3','4','5','6',' '],
+        #['-1', '+2', '-3', '4', '5', '6','-'],
+        #['-1', '+2', '-3', '4', '5', '6'],
+        #['Tim Tom', 'Ulf Uls', 'Max Maxi', 'Alf Also', 'C. A. Term', '123']
         #make_pattern(10, fake.isbn10, separator='-'),
         #make_pattern(10000, fake.uri)
-        #[u'-1'] + random_number(5, digits=1, fix_len=True)
-        #[u'-1', u'+1'] + random_number(5, digits=1, fix_len=True)
-        [fake.sentence(nb_words=6, variable_nb_words=True) for i in range(0,10)]
+        #['-1'] + random_number(5, digits=1, fix_len=True)
+        #['-1', '+1'] + random_number(5, digits=1, fix_len=True)
+        #[fake.sentence(nb_words=6, variable_nb_words=True) for i in range(0,10)]
+        [u'43,462.33', u'30,166.00', u'35,618.00', u'38,356.90', u'77,764.00', u'106,421.00', u'385,895.25', u'503,625.00', u'34,122.08', u'127,974.00', u'148,184.64', u'44,832.91', u'30,702.85', u'365,172.00', u'92,107.78', u'33,589.13', u'5,448,814.11', u'496,835.21', u'34,170.00', u'449,064.18', u'1,250,000.00', u'462,084.00', u'110,777.00', u'33,470.37', u'46,992.13', u'36,000.00', u'32,696.00', u'28,995.06', u'68,691.00', u'25,645.77', u'113,913.43', u'106,228.20', u'34,055.72', u'27,809.00', u'137,004.08', u'31,531.00', u'38,171.08', u'97,616.70', u'-3,389,597.00']
     ]
 
     Timer.GLOBAL_VERBOSE=False
     for values in examples:
-        print "{}\n V: {}".format("=" * 80, values)
+        print ("{}\n V: {}".format("=" * 80, values))
         #p=translate_all(values, filter_empty=False)
         #p = sorted(p, key=functools.cmp_to_key(pattern_comparator))
         #print " {}\n P: {}".format("-" * 80,p)
@@ -550,6 +549,6 @@ if __name__ == '__main__':
         #l3 = l3_aggregate(l2)
         #print "   {}\n   L3: {}".format("'" * 80, l3)
         a=aggregate(values,size=3,)
-        print "   {}\n  A: {}".format("'" * 80, a)
+        print ("   {}\n  A: {}".format("'" * 80, a))
 
-    print Timer.printStats()
+    Timer.printStats()

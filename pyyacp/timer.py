@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import absolute_import, division, print_function, unicode_literals
 import pprint
 
 from faststat.faststat import _sigfigs
@@ -27,20 +31,19 @@ class Timer(object):
         secs = end - self.start
         msecs = secs * 1000  # millisecs
         if self.verbose and Timer.GLOBAL_VERBOSE:
-            print '(%s) elapsed time: %f ms' % (self.key,msecs)
+            print('(%s) elapsed time: %f ms' % (self.key,msecs))
         if self.key and self.store:
             if self.key not in self.__class__.measures:
                 self.__class__.measures[self.key]=faststat.Stats()
             if msecs>=0:
                 self.__class__.measures[self.key].add(msecs)
-            
 
     @classmethod
     def printStats(cls):
-        print "\n -------------------------"
-        print "  Timing stats:" 
+        print("\n -------------------------")
+        print("  Timing stats:" )
         pprint.pprint(cls.getStats())
-        print "\n -------------------------"
+        print("\n -------------------------")
 
 
     @classmethod
