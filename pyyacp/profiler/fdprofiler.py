@@ -182,11 +182,12 @@ class TANEAlgorithm(object):
 
         for i in range(len(rightColumn)):
             #x is a column
-            if tuple([x[i] for x in leftColumns]) in values:
-                if values[tuple([x[i] for x in leftColumns])] != rightColumn[i]:
+            key= tuple([x[i] for x in leftColumns])
+            if key in values:
+                if values[key] != rightColumn[i]:
                     return False
             else:
-                values[tuple([x[i] for x in leftColumns])] = rightColumn[i]
+                values[key] = rightColumn[i]
 
         return True
 
