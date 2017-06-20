@@ -158,7 +158,7 @@ class AdvanceStructureDetector(object):
                 raise ValueError("Header detectiong failed, no potential header group ( likely cause, too many empty cells -> description line)")
             else:
                 raise ValueError(
-                    "Header detectiong failed, row length does not match (est:{}, is:{}".format(est_colNo,grouped_L[0][0]))
+                    "Header detectiong failed, no lines available")
 
 
 

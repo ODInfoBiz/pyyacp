@@ -19,7 +19,8 @@ default_profilers=[ColumnProfilerSet([
                         CharacterDistributionProfiler,
                         BenfordsLawDistribution,
                         DataTypeInterpretation]
-                    ), FDProfiler
+                    )
+    #, FDProfiler
                 ]
 
 @timer(key="profile_table", verbose=False)
