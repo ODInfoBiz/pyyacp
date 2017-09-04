@@ -81,7 +81,7 @@ class YACParser(object):
         else:
             self.table.seek_line(self.description)
 
-    def generate(self, delimiter=',', newline='\n', header=True, comments=True):
+    def generate(self, delimiter=',', newline='\n', header=True, comments=True, samewidth=False):
         """
         :param delimiter: The delimiter symbol. The default is ",".
         :param newline: The line separator. The default is "\n".
@@ -95,10 +95,19 @@ class YACParser(object):
         # write description lines at top
         if comments:
             for line in self.descriptionLines:
-                w.writerow(line)
+                w.writerow(line + [''] * (self.columns - len(line)))
+
         if header:
-            w.writerow(self.getHeader())
+            h = self.getHeader()
+            if samewidth:
+                h = h + [''] * (self.columns - len(h))
+                h = h[:self.columns]
+            w.writerow(h)
+
         for row in self:
+            if samewidth:
+                row = row + [''] * (self.columns - len(row))
+                row = row[:self.columns]
             w.writerow(row)
         return csvstream.getvalue()
 
