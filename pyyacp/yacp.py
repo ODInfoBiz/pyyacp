@@ -1,9 +1,3 @@
-'''
-Created on Jan 29, 2016
-
-@author: jumbrich
-'''
-
 # python 3 compatible
 from pyyacp.table_structure_helper import guess_description_lines, guess_headers, detect_empty_columns
 
@@ -22,9 +16,9 @@ class YACParserException(Exception):
     pass
 
 class YACParser(object):
-    def __init__(self, filename=None, url=None, content=None, sample_size=20, skip_guess_encoding=False):
+    def __init__(self, filename=None, url=None, content=None, sample_size=20, skip_guess_encoding=False, delimiter=None):
 
-        self.table = anycsv.reader(filename=filename, url=url, content=content, skip_guess_encoding=skip_guess_encoding, sniff_lines=sample_size)
+        self.table = anycsv.reader(filename=filename, url=url, content=content, skip_guess_encoding=skip_guess_encoding, sniff_lines=sample_size, delimiter=delimiter)
 
         keys = ['encoding', 'url', 'filename', 'delimiter', 'quotechar']
         self.meta = {}
